@@ -27,6 +27,10 @@ Bundle 'majutsushi/tagbar'
 Bundle 'vim-scripts/AutoComplPop'
 " Fuzzy file finder
 Bundle 'kien/ctrlp.vim'
+" Ag searcher (needs silversearcher-ag)
+Bundle 'rking/ag.vim'
+" Buffer explorer
+Bundle 'jlanzarotta/bufexplorer'
 
 " Dockerfile syntax
 Bundle 'ekalinin/Dockerfile.vim'
