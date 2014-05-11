@@ -31,9 +31,17 @@ Bundle 'kien/ctrlp.vim'
 Bundle 'rking/ag.vim'
 " Buffer explorer
 Bundle 'jlanzarotta/bufexplorer'
+" Indet detectuin plugin
+Bundle 'ciaranm/detectindent'
 
 " Dockerfile syntax
 Bundle 'ekalinin/Dockerfile.vim'
+" Javascript syntax
+Bundle "pangloss/vim-javascript"
+" Coffescript syntax
+Bundle 'kchmck/vim-coffee-script'
+" SCSS syntax
+Bundle 'cakebaker/scss-syntax.vim'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " General settings
