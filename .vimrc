@@ -150,6 +150,8 @@ set ruler
 if has("gui_running")
     colorscheme monokai
 
+    set guifont=monospace\ 10
+
     " Remove toolbar
     set guioptions-=T
 else
@@ -163,5 +165,6 @@ endif
 " Toggle tagbar
 nmap <F8> :TagbarToggle<CR>
 
+" Multi cursor
 let g:multi_cursor_next_key="\<C-d>"
 let g:multi_cursor_next_key="\<C-S-d>"
