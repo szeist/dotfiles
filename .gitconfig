@@ -1,0 +1,23 @@
+[user]
+    email = szeist@gmail.com
+    name = Istvan Szenasi
+
+[core]
+    editor = vim
+    whitespace = fix,-indent-with-non-tab,trailing-space,cr-at-eol
+    excludesfile = ~/.gitignore
+
+[web]
+    browser = google-chrome
+
+[push]
+    default = simple
+
+[color]
+    ui = auto
+
+[diff]
+    tool = vimdiff
+
+[difftool]
+    prompt = false
