@@ -4,44 +4,49 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set nocompatible
 filetype off
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+Plugin 'gmarik/Vundle.vim'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Install plugins with vundle
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Color scheme
-Bundle 'lsdr/monokai'
+Plugin 'lsdr/monokai'
 " File browser
-Bundle 'scrooloose/nerdtree'
+Plugin 'scrooloose/nerdtree'
 " File browser tab support
-Bundle 'jistr/vim-nerdtree-tabs'
+Plugin 'jistr/vim-nerdtree-tabs'
 " VCS support
-Bundle 'vcscommand.vim'
+Plugin 'vcscommand.vim'
 " Multiple cursors
-Bundle 'terryma/vim-multiple-cursors'
+Plugin 'terryma/vim-multiple-cursors'
 " Outline viewer
-Bundle 'majutsushi/tagbar'
+Plugin 'majutsushi/tagbar'
 " Auto completion popup
-Bundle 'vim-scripts/AutoComplPop'
+Plugin 'vim-scripts/AutoComplPop'
 " Fuzzy file finder
-Bundle 'kien/ctrlp.vim'
+Plugin 'kien/ctrlp.vim'
 " Ag searcher (needs silversearcher-ag)
-Bundle 'rking/ag.vim'
+Plugin 'rking/ag.vim'
 " Buffer explorer
-Bundle 'jlanzarotta/bufexplorer'
+Plugin 'jlanzarotta/bufexplorer'
 " Indet detectuin plugin
-Bundle 'ciaranm/detectindent'
+Plugin 'ciaranm/detectindent'
 
 " Dockerfile syntax
-Bundle 'ekalinin/Dockerfile.vim'
+Plugin 'ekalinin/Dockerfile.vim'
 " Javascript syntax
-Bundle "pangloss/vim-javascript"
+Plugin 'pangloss/vim-javascript'
 " Coffescript syntax
-Bundle 'kchmck/vim-coffee-script'
+Plugin 'kchmck/vim-coffee-script'
 " SCSS syntax
-Bundle 'cakebaker/scss-syntax.vim'
+Plugin 'cakebaker/scss-syntax.vim'
+
+call vundle#end()
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " General settings
