@@ -36,6 +36,10 @@ Plugin 'rking/ag.vim'
 Plugin 'jlanzarotta/bufexplorer'
 " Indet detectuin plugin
 Plugin 'ciaranm/detectindent'
+" Workspace plugin
+Plugin 'szw/vim-ctrlspace'
+" Improved status/tabline
+Plugin 'bling/vim-airline'
 
 " Dockerfile syntax
 Plugin 'ekalinin/Dockerfile.vim'
@@ -164,11 +168,27 @@ else
 endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Plugin settings
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" CtrlP settings
+let g:ctrlp_show_hidden=1
+
+" Airline settings
+let g:airline_theme='molokai'
+let g:airline_exclude_preview=1
+
+" NERDTree settings
+let g:nerdtree_tabs_open_on_gui_startup=0
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Key bindings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Toggle tagbar
 nmap <F8> :TagbarToggle<CR>
+map <Leader>n <plug>NERDTreeTabsToggle<CR>
+map <Leader>t :tabnew<CR>
 
 " Multi cursor
 let g:multi_cursor_next_key="\<C-d>"
