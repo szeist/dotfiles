@@ -155,6 +155,9 @@ syntax on
 " Always show postision
 set ruler
 
+" Always show statusline
+set laststatus=2
+
 " GUI dependent settings
 if has("gui_running")
     colorscheme monokai
