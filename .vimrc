@@ -162,10 +162,14 @@ set laststatus=2
 if has("gui_running")
     colorscheme monokai
 
-    set guifont=monospace\ 10
+    set guifont=Dejavu\ Sans\ Mono\ 10
 
     " Remove toolbar
     set guioptions-=T
+	set guioptions-=m
+	set guioptions-=L
+	set guioptions-=r
+	set guioptions-=e
 else
     colorscheme koehler
 endif
