@@ -17,3 +17,11 @@
 # Decrease brightness
 "xbacklight -dec 10"
     XF86MonBrightnessDown
+
+# Mail button
+"thunderbird"
+    XF86Mail
+
+# Browser button
+"google-chrome-stable"
+    XF86HomePage
