@@ -1,0 +1,19 @@
+# Mute button
+"amixer sset Master Playback pvolume toggle"
+    XF86AudioMute
+
+# Volume up button
+"amixer sset Master Playback pvolume 4-"
+    XF86AudioLowerVolume
+
+# Volume down button
+"amixer sset Master Playback pvolume 4+"
+    XF86AudioRaiseVolume
+
+# Increase brightness
+"xbacklight -inc 10"
+    XF86MonBrightnessUp
+
+# Decrease brightness
+"xbacklight -dec 10"
+    XF86MonBrightnessDown

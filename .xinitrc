@@ -28,5 +28,11 @@ xset r rate 200 30
 # Set keyboard layout
 setxkbmap -layout hu
 
+# Load key mappings
+xmodmap ~./.Xmodmap
+
+# Load key bindings
+xbindkeys
+
 # Start XMonad
 xmonad
