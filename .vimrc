@@ -40,6 +40,8 @@ Plugin 'ciaranm/detectindent'
 Plugin 'szw/vim-ctrlspace'
 " Improved status/tabline
 Plugin 'bling/vim-airline'
+" Show VCS modifications
+Plugin 'mhinz/vim-signify'
 
 " Dockerfile syntax
 Plugin 'ekalinin/Dockerfile.vim'
@@ -49,6 +51,8 @@ Plugin 'pangloss/vim-javascript'
 Plugin 'kchmck/vim-coffee-script'
 " SCSS syntax
 Plugin 'cakebaker/scss-syntax.vim'
+" Twig syntax
+Plugin 'evidens/vim-twig'
 
 call vundle#end()
 
@@ -129,6 +133,14 @@ autocmd BufReadPost *
 " Remember open buffers
 set viminfo^=%
 
+" Filetype specific indents
+autocmd FileType javascript setlocal shiftwidth=2 tabstop=2 expandtab
+autocmd FileType json setlocal shiftwidth=2 tabstop=2 expandtab
+autocmd FileType html setlocal shiftwidth=2 tabstop=2 expandtab
+
+" Filetype specific syntax
+autocmd BufRead,BufNewFile .xmobarrc setfiletype haskell
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " UI settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -162,7 +174,7 @@ set laststatus=2
 if has("gui_running")
     colorscheme monokai
 
-    set guifont=Dejavu\ Sans\ Mono\ 10
+    set guifont=Dejavu\ Sans\ Mono\ 12
 
     " Remove toolbar
     set guioptions-=T
