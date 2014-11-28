@@ -23,5 +23,5 @@
     XF86Mail
 
 # Browser button
-"google-chrome-stable"
+"chromium"
     XF86HomePage
