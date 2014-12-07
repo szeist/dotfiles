@@ -42,6 +42,8 @@ Plugin 'szw/vim-ctrlspace'
 Plugin 'bling/vim-airline'
 " Show VCS modifications
 Plugin 'mhinz/vim-signify'
+" Syntax checker
+Plugin 'scrooloose/syntastic'
 
 " Dockerfile syntax
 Plugin 'ekalinin/Dockerfile.vim'
@@ -113,6 +115,12 @@ set magic
 " Show matching brackets
 set showmatch
 
+" Search ignore patterns
+set wildignore+=.git,.hg
+set wildignore+=*/tmp/*,*/temp/*,*/cache/*
+set wildignore+=*.o,*.so,*.swp,*.zip
+set wildignore+=node_modules,bower_components,vendor
+
 " Don't redraw while running macros
 set lazyredraw
 
@@ -174,7 +182,7 @@ set laststatus=2
 if has("gui_running")
     colorscheme monokai
 
-    set guifont=Dejavu\ Sans\ Mono\ 12
+    set guifont=Dejavu\ Sans\ Mono\ 10
 
     " Remove toolbar
     set guioptions-=T
@@ -199,6 +207,17 @@ let g:airline_exclude_preview=1
 
 " NERDTree settings
 let g:nerdtree_tabs_open_on_gui_startup=0
+
+" Signnify settings
+let g:signify_vcs_list=['git', 'hg']
+let g:signify_update_on_bufenter = 1
+
+" Sintastic settings
+let g:syntastic_check_on_open=1
+let g:syntastic_enable_signs=1
+let g:syntastic_php_checkrs=['php']
+let g:syntastic_javascript_checkers = ['jshint']
+let g:syntastic_hs_checkers = ['ghc-mod', 'hlint']
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Key bindings
