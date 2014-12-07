@@ -8,12 +8,12 @@ Config {
         Run Memory ["-t", "Mem: <usedratio>%"] 10,
         Run Date "%a %b %_d %l:%M" "date" 60,
         Run Wireless "wlo1" ["-L", "40", "-H", "70", "--normal", "yellow", "--high", "green", "--low", "red", "-t", "<essid> (<quality>%)"] 60,
-        Run Network "enp0s25" [] 10,
+        Run DynNetwork [] 10,
         Run BatteryP ["BAT0"] ["-t", "<acstatus>", "-L", "10", "-H", "80", "-l", "red", "-h", "green", "--", "-O", "Charging", "-o", "Batt: <left>%" ] 120,
         Run Volume "default" "Master" [] 10,
         Run StdinReader
     ],
     sepChar = "%"
     alignSep = "}{"
-    template = "%StdinReader% }{ %cpu% %memory% | %battery% | %enp0s25% | %wlo1wi% | %default:Master% | <fc=#ee9a00>%date%</fc> |"
+    template = "%StdinReader% }{ %cpu% %memory% | %battery% | %dynnetwork% | %wlo1wi% | %default:Master% | <fc=#ee9a00>%date%</fc> |"
 }

@@ -5,8 +5,11 @@ xrdb $HOME/.Xresources
 # Reset screen resolution
 xrandr -s 0
 
-# Set up external display (laptop only)
-if [ $(hostname) == 'szena-laptop' ]; then
+# Set up screen resolution
+xrandr --dpi  96x96
+
+# Set up up external monitor (if connected)
+if [ $(xrandr -q | grep "^VGA1\s\+connected" | wc -l) -eq 1 ]; then
     xrandr  --output VGA1 --right-of eDP1 --auto;
 fi
 
@@ -15,9 +18,6 @@ xsetroot -cursor_name left_ptr
 
 # Default background color
 xsetroot -solid '#80a0af'
-if [ -e ~/.Xbackground.png ]; then
-    xloadimage -onroot -fullscreen ~/.Xbackground.png;
-fi
 
 # Turn off console beep
 xset b off
@@ -29,10 +29,7 @@ xset r rate 200 30
 setxkbmap -layout hu
 
 # Load key mappings
-xmodmap ~./.Xmodmap
-
-# Load key bindings
-xbindkeys
+xmodmap .Xmodmap
 
 # Start XMonad
 xmonad
