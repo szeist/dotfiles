@@ -32,4 +32,4 @@ setxkbmap -layout hu
 xmodmap .Xmodmap
 
 # Start XMonad
-xmonad
+exec dbus-launch --exit-with-session --sh-syntax xmonad
