@@ -11,6 +11,7 @@ import System.Directory (doesFileExist)
 import Graphics.X11.Xinerama (getScreenInfo)
 import Graphics.ImageMagick.MagickWand
 import Filesystem.Path.CurrentOS (decodeString)
+import XMonad.Hooks.SetWMName
 
 -- Workspaces
 myWorkspaces :: [ String ]
@@ -38,6 +39,7 @@ myStartupHook :: X()
 myStartupHook = do
     spawn "trayer-srg --edge top --align right --width 5 --height 18 --transparent true --alpha 0 --tint 0x101010 --SetDockType true --SetPartialStrut true"
     spawn "xbindkeys"
+    setWMName "LG3D"
 
 -- Additional key mappings
 myKeys :: [ (String, X ()) ]
