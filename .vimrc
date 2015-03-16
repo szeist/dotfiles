@@ -44,6 +44,9 @@ Plugin 'bling/vim-airline'
 Plugin 'mhinz/vim-signify'
 " Syntax checker
 Plugin 'scrooloose/syntastic'
+" CTags updater
+Plugin 'xolox/vim-misc'
+Plugin 'xolox/vim-easytags'
 
 " Dockerfile syntax
 Plugin 'ekalinin/Dockerfile.vim'
@@ -117,7 +120,7 @@ set showmatch
 
 " Search ignore patterns
 set wildignore+=.git,.hg
-set wildignore+=*/tmp/*,*/temp/*,*/cache/*
+set wildignore+=tmp/*,temp/*,cache/*,.rsync_cache
 set wildignore+=*.o,*.so,*.swp,*.zip
 set wildignore+=node_modules,bower_components,vendor
 
@@ -214,15 +217,22 @@ let g:airline_exclude_preview=1
 " NERDTree settings
 let g:nerdtree_tabs_open_on_gui_startup=0
 
-" Signnify settings
+" Signify settings
 let g:signify_vcs_list=['git', 'hg']
 let g:signify_update_on_bufenter = 1
 
-" Sintastic settings
+" Syntastic settings
 let g:syntastic_check_on_open=1
 let g:syntastic_enable_signs=1
 let g:syntastic_javascript_checkers = ['jshint']
+let g:syntastic_php_checkers = ['php']
 let g:syntastic_hs_checkers = ['ghc-mod', 'hlint']
+
+" Easytags settings
+"set tags=./tags
+let g:easytags_async=1
+"let g:easytags_dynamic_files=1
+let g:easytags_events = ['BufWritePost'] 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Key bindings
