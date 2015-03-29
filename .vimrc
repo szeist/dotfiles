@@ -32,8 +32,6 @@ Plugin 'vim-scripts/AutoComplPop'
 Plugin 'kien/ctrlp.vim'
 " Ag searcher (needs silversearcher-ag)
 Plugin 'rking/ag.vim'
-" Buffer explorer
-Plugin 'jlanzarotta/bufexplorer'
 " Indet detectuin plugin
 Plugin 'ciaranm/detectindent'
 " Workspace plugin
@@ -47,6 +45,9 @@ Plugin 'scrooloose/syntastic'
 " CTags updater
 Plugin 'xolox/vim-misc'
 Plugin 'xolox/vim-easytags'
+
+" Scala plugin
+Plugin 'derekwyatt/vim-scala'
 
 " Dockerfile syntax
 Plugin 'ekalinin/Dockerfile.vim'
@@ -120,7 +121,7 @@ set showmatch
 
 " Search ignore patterns
 set wildignore+=.git,.hg
-set wildignore+=tmp/*,temp/*,cache/*,.rsync_cache
+set wildignore+=tmp/*,temp/*,*/cache/*,.rsync_cache
 set wildignore+=*.o,*.so,*.swp,*.zip
 set wildignore+=node_modules,bower_components,vendor
 
@@ -136,7 +137,7 @@ set novisualbell
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Remember last position
-" http://amix.dk/vim/vimrc.html 
+" http://amix.dk/vim/vimrc.html
 autocmd BufReadPost *
     \ if line("'\"") > 0 && line("'\"") <= line("$") |
     \   exe "normal! g`\"" |
@@ -148,6 +149,7 @@ set viminfo^=%
 autocmd FileType javascript setlocal shiftwidth=2 tabstop=2 expandtab
 autocmd FileType json setlocal shiftwidth=2 tabstop=2 expandtab
 autocmd FileType html setlocal shiftwidth=2 tabstop=2 expandtab
+autocmd FileType twig setlocal shiftwidth=2 tabstop=2 expandtab
 
 " Filetype specific syntax
 autocmd BufRead,BufNewFile .xmobarrc setfiletype haskell
@@ -220,13 +222,13 @@ let g:syntastic_check_on_open=1
 let g:syntastic_enable_signs=1
 let g:syntastic_javascript_checkers = ['jshint']
 let g:syntastic_php_checkers = ['php']
-let g:syntastic_hs_checkers = ['ghc-mod', 'hlint']
+let g:syntastic_hs_checkers = ['hlint']
 
 " Easytags settings
 "set tags=./tags
 let g:easytags_async=1
 "let g:easytags_dynamic_files=1
-let g:easytags_events = ['BufWritePost'] 
+let g:easytags_events = ['BufWritePost']
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Key bindings
@@ -239,4 +241,3 @@ map <Leader>t :tabnew<CR>
 
 " Multi cursor
 let g:multi_cursor_next_key="\<C-d>"
-let g:multi_cursor_next_key="\<C-S-d>"
