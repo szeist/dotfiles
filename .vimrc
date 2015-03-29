@@ -146,15 +146,7 @@ autocmd BufReadPost *
 set viminfo^=%
 
 " Filetype specific indents
-autocmd FileType javascript setlocal shiftwidth=2 tabstop=2 expandtab
-autocmd FileType json setlocal shiftwidth=2 tabstop=2 expandtab
-autocmd FileType html setlocal shiftwidth=2 tabstop=2 expandtab
-autocmd FileType html.twig setlocal shiftwidth=2 tabstop=2 expandtab
-autocmd FileType htmldjango.twig setlocal shiftwidth=2 tabstop=2 expandtab
-autocmd FileType yaml setlocal shiftwidth=2 tabstop=2 expandtab
-autocmd FileType scss setlocal shiftwidth=2 tabstop=2 expandtab
-autocmd FileType css setlocal shiftwidth=2 tabstop=2 expandtab
-autocmd FileType xml setlocal shiftwidth=2 tabstop=2 expandtab
+autocmd FileType javascript,json,html,html.twig,htmldjango.twig,yaml,scss,css,xml setlocal shiftwidth=2 tabstop=2 expandtab
 
 " Filetype specific syntax
 autocmd BufRead,BufNewFile .xmobarrc setfiletype haskell
