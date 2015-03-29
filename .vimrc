@@ -139,9 +139,9 @@ set novisualbell
 " Remember last position
 " http://amix.dk/vim/vimrc.html
 autocmd BufReadPost *
-    \ if line("'\"") > 0 && line("'\"") <= line("$") |
-    \   exe "normal! g`\"" |
-    \ endif
+            \ if line("'\"") > 0 && line("'\"") <= line("$") |
+            \   exe "normal! g`\"" |
+            \ endif
 " Remember open buffers
 set viminfo^=%
 
@@ -149,7 +149,12 @@ set viminfo^=%
 autocmd FileType javascript setlocal shiftwidth=2 tabstop=2 expandtab
 autocmd FileType json setlocal shiftwidth=2 tabstop=2 expandtab
 autocmd FileType html setlocal shiftwidth=2 tabstop=2 expandtab
-autocmd FileType twig setlocal shiftwidth=2 tabstop=2 expandtab
+autocmd FileType html.twig setlocal shiftwidth=2 tabstop=2 expandtab
+autocmd FileType htmldjango.twig setlocal shiftwidth=2 tabstop=2 expandtab
+autocmd FileType yaml setlocal shiftwidth=2 tabstop=2 expandtab
+autocmd FileType scss setlocal shiftwidth=2 tabstop=2 expandtab
+autocmd FileType css setlocal shiftwidth=2 tabstop=2 expandtab
+autocmd FileType xml setlocal shiftwidth=2 tabstop=2 expandtab
 
 " Filetype specific syntax
 autocmd BufRead,BufNewFile .xmobarrc setfiletype haskell
