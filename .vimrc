@@ -27,7 +27,7 @@ Plugin 'terryma/vim-multiple-cursors'
 " Outline viewer
 Plugin 'majutsushi/tagbar'
 " Auto completion popup
-Plugin 'vim-scripts/AutoComplPop'
+Plugin 'Shougo/neocomplete'
 " Fuzzy file finder
 Plugin 'kien/ctrlp.vim'
 " Ag searcher (needs silversearcher-ag)
@@ -48,6 +48,7 @@ Plugin 'xolox/vim-easytags'
 
 " Scala plugin
 Plugin 'derekwyatt/vim-scala'
+Plugin 'vim-scripts/OmniCppComplete'
 
 " Dockerfile syntax
 Plugin 'ekalinin/Dockerfile.vim'
@@ -151,6 +152,14 @@ autocmd FileType javascript,json,html,html.twig,htmldjango.twig,yaml,scss,css,xm
 " Filetype specific syntax
 autocmd BufRead,BufNewFile .xmobarrc setfiletype haskell
 
+autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+autocmd FileType cpp,hpp set omnifunc=omni#cpp#complete#Main
+
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " UI settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -226,6 +235,19 @@ let g:syntastic_hs_checkers = ['hlint']
 let g:easytags_async=1
 "let g:easytags_dynamic_files=1
 let g:easytags_events = ['BufWritePost']
+
+" Neocomplete settings
+" Use neocomplete.
+let g:neocomplete#enable_at_startup = 1
+" Use smartcase.
+let g:neocomplete#enable_smart_case = 1
+" Set minimum syntax keyword length.
+let g:neocomplete#sources#syntax#min_keyword_length = 3
+let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
+" Enable heavy omni completion.
+if !exists('g:neocomplete#sources#omni#input_patterns')
+    let g:neocomplete#sources#omni#input_patterns = {}
+endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Key bindings
