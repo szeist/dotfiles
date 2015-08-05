@@ -44,10 +44,16 @@ Plugin 'mhinz/vim-signify'
 Plugin 'scrooloose/syntastic'
 " CTags updater
 Plugin 'xolox/vim-misc'
+" Automated tag generation
 Plugin 'xolox/vim-easytags'
+" Tmux integration
+Plugin 'epeli/slimux'
 
 " Scala plugin
 Plugin 'derekwyatt/vim-scala'
+" SBT integration plugin
+Plugin 'ktvoelker/sbt-vim'
+" C++ code completion
 Plugin 'vim-scripts/OmniCppComplete'
 
 " Dockerfile syntax
@@ -147,7 +153,7 @@ autocmd BufReadPost *
 set viminfo^=%
 
 " Filetype specific indents
-autocmd FileType javascript,json,html,html.twig,htmldjango.twig,yaml,scss,css,xml setlocal shiftwidth=2 tabstop=2 expandtab
+autocmd FileType javascript,json,html,html.twig,htmldjango.twig,yaml,scss,css,xml,python,jade,coffee,haskell setlocal shiftwidth=2 tabstop=2 expandtab
 
 " Filetype specific syntax
 autocmd BufRead,BufNewFile .xmobarrc setfiletype haskell
@@ -159,6 +165,10 @@ autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 autocmd FileType cpp,hpp set omnifunc=omni#cpp#complete#Main
 
+" Hdevtools key bindings
+au FileType haskell nnoremap <buffer> <F1> :HdevtoolsType<CR>
+au FileType haskell nnoremap <buffer> <silent> <F2> :HdevtoolsClear<CR>
+au FileType haskell nnoremap <buffer> <silent> <F3> :HdevtoolsInfo<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " UI settings
@@ -248,6 +258,24 @@ let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
 if !exists('g:neocomplete#sources#omni#input_patterns')
     let g:neocomplete#sources#omni#input_patterns = {}
 endif
+
+" Turn off neocomplete  when multiple cursors are active
+"
+function! Multiple_cursors_before()
+    exe 'NeoCompleteLock'
+    echo 'Disabled autocomplete'
+endfunction
+
+function! Multiple_cursors_after()
+    exe 'NeoCompleteUnlock'
+    echo 'Enabled autocomplete'
+endfunction
+
+" Slimux settings
+map <Leader>s :SlimuxREPLSendLine<CR>
+vmap <Leader>s :SlimuxREPLSendSelection<CR>
+map <Leader>a :SlimuxShellLast<CR>
+map <Leader>k :SlimuxSendKeysLast<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Key bindings
