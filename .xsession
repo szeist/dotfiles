@@ -26,7 +26,7 @@ xset b off
 xset r rate 200 30
 
 # Set keyboard layout
-setxkbmap -layout hu
+setxkbmap -layout en_US
 
 # Load key mappings
 xmodmap .Xmodmap
