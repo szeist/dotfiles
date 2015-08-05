@@ -48,6 +48,8 @@ Plugin 'xolox/vim-misc'
 Plugin 'xolox/vim-easytags'
 " Tmux integration
 Plugin 'epeli/slimux'
+" Editorconfig support
+Plugin 'editorconfig/editorconfig-vim'
 
 " Scala plugin
 Plugin 'derekwyatt/vim-scala'
