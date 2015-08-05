@@ -1,0 +1,78 @@
+# Conky settings
+update_interval 3
+cpu_avg_samples 2
+net_avg_samples 2
+double_buffer yes
+temperature_unit celsius
+
+# Display settings
+alignment top_left
+maximum_width 205
+own_window yes
+own_window_type override
+use_xft yes
+xftfont Dejavu Sans Mono:size=8
+xftalpha 0.5
+draw_shades no
+
+# Lua Load
+lua_load ~/.conky/clock_rings.lua
+lua_draw_hook_pre conky_clock_rings
+
+# Colors
+color1 FFFFFF
+color2 0866FF
+
+TEXT
+# Clock ring labels
+${color1}${goto 15}${voffset 5}${cpu cpu1}%
+${color2}${goto 15}CPU 1
+${color1}${goto 65}${voffset -25}${cpu cpu2}%
+${color2}${goto 65}CPU 2
+${color1}${goto 115}${voffset -25}${cpu cpu3}%
+${color2}${goto 115}CPU 3
+${color1}${goto 165}${voffset -25}${cpu cpu4}%
+${color2}${goto 165}CPU 4
+\
+${color1}${goto 28}${voffset 40}${loadavg 1}
+${color2}${goto 25}Load
+\
+${color1}${goto 170}${voffset -25}${hwmon 0 temp 2}°C
+${color1}${goto 170}${hwmon 0 temp 4}°C
+${color2}${goto 170}Temp
+\
+${color1}${goto 53}${voffset 12}${memperc}%
+${color1}${goto 53}${swapperc}%
+${color2}${goto 53}Mem
+\
+${color1}${goto 145}${voffset -40}${downspeedf gw_iface}KiB
+${color1}${goto 145}${upspeedf gw_iface}KiB
+${color2}${goto 145}${gw_iface}
+
+${color2}${font ubuntu:size=8}Processes: ${color1} ${processes}
+${color2}${font ubuntu:size=8}Running: ${color1} ${running_processes} / ${running_threads}
+${color2}${font ubuntu:size=8}Battery: ${color1} $battery ${color2}${battery_bar BAT0 11,0}
+${color2}${font ubuntu:size=8}Free space: ${color1} ${fs_free} (${fs_free_perc}%) ${color2}${fs_bar_free /}
+
+# Proceses
+\
+${color2}Proc${alignr 39}Cpu %
+${color1}${top name 1}${alignr 39}${top cpu 1} %
+${color1}${top name 2}${alignr 39}${top cpu 2} %
+${color1}${top name 3}${alignr 39}${top cpu 3} %
+
+${color2}Proc${alignr 39}Mem
+${color1}${top_mem name 1}${alignr 39}${top_mem mem_res 1}
+${color1}${top_mem name 2}${alignr 39}${top_mem mem_res 2}
+${color1}${top_mem name 3}${alignr 39}${top_mem mem_res 3}
+
+${color2}Proc${alignr 39}IO %
+${color1}${top_io name 1}${alignr 39}${top_io io_perc 1}
+${color1}${top_io name 2}${alignr 39}${top_io io_perc 2}
+${color1}${top_io name 3}${alignr 39}${top_io io_perc 3}
+
+${color2}Uptime: ${color1} ${uptime_short}
+${color2}Last sync: ${color1} ${execi 180 cat /usr/portage/metadata/timestamp.chk}
+
+${color2}${alignr}${nodename}
+${color2}${alignr}Kernel: ${kernel}

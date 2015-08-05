@@ -7,6 +7,7 @@ import XMonad.Layout.PerWorkspace
 import XMonad.Layout.SimpleFloat
 import System.IO
 import Control.Monad (when)
+import Control.Applicative((<$>))
 import System.Directory (doesFileExist)
 import Graphics.X11.Xinerama (getScreenInfo)
 import Graphics.ImageMagick.MagickWand
@@ -43,7 +44,7 @@ myStartupHook = do
 
 -- Additional key mappings
 myKeys :: [ (String, X ()) ]
-myKeys = [ ("M-q", spawn "killall trayer-srg xbindkeys; xmonad --restart") ]
+myKeys = [ ("M-q", spawn "killall trayer-srg xbindkeys conky; xmonad --restart") ]
 
 main :: IO ()
 main = do
@@ -52,10 +53,13 @@ main = do
     -- Draw background image to all screen
     doesFileExist ".Xbackground.png" >>= flip when (drawBackground ".Xbackground.png")
 
+    spawnConky 45 250
+
     xmonad $ defaultConfig {
         workspaces = myWorkspaces,
         layoutHook = myLayouts,
         manageHook = myManageHook,
+        focusedBorderColor = "#00A300",
         -- Print status info and xmobar on state updates
         logHook = dynamicLogWithPP xmobarPP {
             ppOutput = hPutStrLn xmproc,
@@ -102,3 +106,10 @@ getImageDims fileName = withMagickWandGenesis $ do
     height <- getImageHeight wand
 
     return (width, height)
+
+spawnConky :: Int -> Int -> IO()
+spawnConky topOffset rightOffset = getScreenDims 0 >>= \dims -> spawn $ "conky -x " ++ show (fst dims - rightOffset) ++ " -y " ++ show topOffset
+
+getScreenDims :: Int -> IO (Int, Int)
+getScreenDims screenIdx = get_dims <$> (!! screenIdx) <$> (openDisplay "" >>= getScreenInfo)
+  where get_dims rect = (fromIntegral $ rect_width rect, fromIntegral $ rect_height rect)
