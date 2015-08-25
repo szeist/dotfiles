@@ -50,6 +50,9 @@ Plugin 'xolox/vim-easytags'
 Plugin 'epeli/slimux'
 " Editorconfig support
 Plugin 'editorconfig/editorconfig-vim'
+" Support local vimrc
+Plugin 'LucHermitte/lh-vim-lib'
+Plugin 'szeist/local_vimrc'
 
 " Scala plugin
 Plugin 'derekwyatt/vim-scala'
@@ -130,9 +133,9 @@ set showmatch
 
 " Search ignore patterns
 set wildignore+=.git,.hg
-set wildignore+=tmp/*,temp/*,*/cache/*,.rsync_cache
+set wildignore+=*/tmp,*/temp,*/.tmp,*/cache,*/.rsync_cache,*/.sass-cache
 set wildignore+=*.o,*.so,*.swp,*.zip
-set wildignore+=node_modules,bower_components,vendor
+set wildignore+=*/node_modules,*/bower_components,*/vendor
 
 " Don't redraw while running macros
 set lazyredraw
@@ -140,6 +143,9 @@ set lazyredraw
 " Turn of beels
 set noerrorbells
 set novisualbell
+"
+" Remember open buffers
+set viminfo^=%
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Automatic commands
@@ -151,8 +157,8 @@ autocmd BufReadPost *
             \ if line("'\"") > 0 && line("'\"") <= line("$") |
             \   exe "normal! g`\"" |
             \ endif
-" Remember open buffers
-set viminfo^=%
+
+autocmd VimEnter * SourceLocalVimrc
 
 " Filetype specific indents
 autocmd FileType php,perl setlocal shiftwidth=4 tabstop=4 expandtab
@@ -260,6 +266,9 @@ let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
 if !exists('g:neocomplete#sources#omni#input_patterns')
     let g:neocomplete#sources#omni#input_patterns = {}
 endif
+
+" Set local vimrc filename
+let g:local_vimrc = ".vimrc_local.vim"
 
 " Turn off neocomplete  when multiple cursors are active
 "
