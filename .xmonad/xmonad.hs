@@ -30,7 +30,7 @@ myManageHook = composeAll [
         className =? "Chromium-browser" --> doShift "web",
         className =? "Firefox" --> doShift "web",
         className =? "Thunderbird" --> doShift "mail",
-        className =? "Skype" --> doShift "im"
+        (className =? "Skype" <||> className =? "HipChat") --> doShift "im"
     ]
     <+> manageDocks
     <+> manageHook defaultConfig
