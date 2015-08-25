@@ -98,8 +98,8 @@ set hid
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Set tab width
-set shiftwidth=4
-set tabstop=4
+set shiftwidth=2
+set tabstop=2
 
 " Use spaces instead of tabs
 set expandtab
@@ -155,7 +155,7 @@ autocmd BufReadPost *
 set viminfo^=%
 
 " Filetype specific indents
-autocmd FileType javascript,json,html,html.twig,htmldjango.twig,yaml,scss,css,xml,python,jade,coffee,haskell setlocal shiftwidth=2 tabstop=2 expandtab
+autocmd FileType php,perl setlocal shiftwidth=4 tabstop=4 expandtab
 
 " Filetype specific syntax
 autocmd BufRead,BufNewFile .xmobarrc setfiletype haskell
