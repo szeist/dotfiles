@@ -11,15 +11,13 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Install plugins with vundle
+" Plugins
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Color scheme
 Plugin 'lsdr/monokai'
 " File browser
 Plugin 'scrooloose/nerdtree'
-" File browser tab support
-Plugin 'jistr/vim-nerdtree-tabs'
 " VCS support
 Plugin 'vcscommand.vim'
 " Multiple cursors
@@ -52,7 +50,7 @@ Plugin 'epeli/slimux'
 Plugin 'editorconfig/editorconfig-vim'
 " Support local vimrc
 Plugin 'LucHermitte/lh-vim-lib'
-Plugin 'szeist/local_vimrc'
+Plugin 'LucHermitte/local_vimrc'
 
 " Scala plugin
 Plugin 'derekwyatt/vim-scala'
@@ -71,6 +69,8 @@ Plugin 'kchmck/vim-coffee-script'
 Plugin 'cakebaker/scss-syntax.vim'
 " Twig syntax
 Plugin 'evidens/vim-twig'
+" Jade syntax
+Plugin 'digitaltoad/vim-jade'
 
 call vundle#end()
 
@@ -78,7 +78,6 @@ call vundle#end()
 " General settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" Enable filetype plugins
 filetype plugin indent on
 
 " Auto read file changes
@@ -88,7 +87,6 @@ set autoread
 set backspace=eol,start,indent
 set whichwrap+=<,>,h,l
 
-" Turn off backups and swap files
 set nobackup
 set nowb
 set noswapfile
@@ -96,11 +94,13 @@ set noswapfile
 " Hide abandoned buffers
 set hid
 
+" Enable mouse in all modes
+set mouse=a
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Indent settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" Set tab width
 set shiftwidth=2
 set tabstop=2
 
@@ -116,23 +116,16 @@ set si
 " Search settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" Search case settings
 set ignorecase
 set smartcase
 
-" Highlight search
 set hls
-" Incremental search
 set incsearch
-
-" Use magic regexps
-set magic
 
 " Show matching brackets
 set showmatch
 
-" Search ignore patterns
-set wildignore+=.git,.hg
+set wildignore+=.git,.hg,.svn
 set wildignore+=*/tmp,*/temp,*/.tmp,*/cache,*/.rsync_cache,*/.sass-cache
 set wildignore+=*.o,*.so,*.swp,*.zip
 set wildignore+=*/node_modules,*/bower_components,*/vendor
@@ -140,10 +133,9 @@ set wildignore+=*/node_modules,*/bower_components,*/vendor
 " Don't redraw while running macros
 set lazyredraw
 
-" Turn of beels
 set noerrorbells
 set novisualbell
-"
+
 " Remember open buffers
 set viminfo^=%
 
@@ -160,10 +152,8 @@ autocmd BufReadPost *
 
 autocmd VimEnter * SourceLocalVimrc
 
-" Filetype specific indents
 autocmd FileType php,perl setlocal shiftwidth=4 tabstop=4 expandtab
 
-" Filetype specific syntax
 autocmd BufRead,BufNewFile .xmobarrc setfiletype haskell
 
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
@@ -183,7 +173,7 @@ au FileType haskell nnoremap <buffer> <silent> <F3> :HdevtoolsInfo<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Always show the status line
-set laststatus=1
+set laststatus=2
 
 " Always show tabline
 set showtabline=2
@@ -192,22 +182,15 @@ set showtabline=2
 set wildmenu
 set wildmode=list:longest,full
 
-" Wrap lines
 set wrap
 
-" Line numbers
 set nu
 
-" Syntax highlight
 syntax on
 
-" Always show postision
 set ruler
 
-" Always show statusline
-set laststatus=2
-
-" GUI dependent settings
+" GUI only settings
 if has("gui_running")
     colorscheme monokai
 
@@ -219,6 +202,7 @@ if has("gui_running")
 	set guioptions-=L
 	set guioptions-=r
 	set guioptions-=e
+" Console only settings
 else
     colorscheme koehler
 endif
@@ -227,41 +211,40 @@ endif
 " Plugin settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" CtrlP settings
 let g:ctrlp_show_hidden=1
 
-" Airline settings
 let g:airline_theme='molokai'
 let g:airline_exclude_preview=1
 
-" NERDTree settings
 let g:nerdtree_tabs_open_on_gui_startup=0
 
-" Signify settings
-let g:signify_vcs_list=['git', 'hg']
+let g:signify_vcs_list=['git', 'hg', 'svn']
 let g:signify_update_on_bufenter = 1
 
-" Syntastic settings
 let g:syntastic_check_on_open=1
 let g:syntastic_enable_signs=1
 let g:syntastic_javascript_checkers = ['jshint']
 let g:syntastic_php_checkers = ['php']
-let g:syntastic_hs_checkers = ['hlint']
 
 " Easytags settings
-"set tags=./tags
+set tags=./tags
 let g:easytags_async=1
-"let g:easytags_dynamic_files=1
+let g:easytags_dynamic_files=1
 let g:easytags_events = ['BufWritePost']
 
 " Neocomplete settings
-" Use neocomplete.
 let g:neocomplete#enable_at_startup = 1
-" Use smartcase.
 let g:neocomplete#enable_smart_case = 1
-" Set minimum syntax keyword length.
 let g:neocomplete#sources#syntax#min_keyword_length = 3
 let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
+
+"let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
+"let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
+"let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
+
+" For perlomni.vim setting.
+" https://github.com/c9s/perlomni.vim
+"let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
 " Enable heavy omni completion.
 if !exists('g:neocomplete#sources#omni#input_patterns')
     let g:neocomplete#sources#omni#input_patterns = {}
@@ -282,12 +265,6 @@ function! Multiple_cursors_after()
     echo 'Enabled autocomplete'
 endfunction
 
-" Slimux settings
-map <Leader>s :SlimuxREPLSendLine<CR>
-vmap <Leader>s :SlimuxREPLSendSelection<CR>
-map <Leader>a :SlimuxShellLast<CR>
-map <Leader>k :SlimuxSendKeysLast<CR>
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Key bindings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -299,3 +276,9 @@ map <Leader>t :tabnew<CR>
 
 " Multi cursor
 let g:multi_cursor_next_key="\<C-d>"
+
+" Slimux key bindings
+map <Leader>s :SlimuxREPLSendLine<CR>
+vmap <Leader>s :SlimuxREPLSendSelection<CR>
+map <Leader>a :SlimuxShellLast<CR>
+map <Leader>k :SlimuxSendKeysLast<CR>
