@@ -271,7 +271,7 @@ endfunction
 
 " Toggle tagbar
 nmap <F8> :TagbarToggle<CR>
-map <Leader>n <plug>NERDTreeTabsToggle<CR>
+map <Leader>n :NERDTreeToggle<CR>
 map <Leader>t :tabnew<CR>
 
 " Multi cursor
