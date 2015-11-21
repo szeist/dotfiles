@@ -58,6 +58,8 @@ Plugin 'derekwyatt/vim-scala'
 Plugin 'ktvoelker/sbt-vim'
 " C++ code completion
 Plugin 'vim-scripts/OmniCppComplete'
+" Octave plugin
+Plugin 'jvirtanen/vim-octave'
 
 " Dockerfile syntax
 Plugin 'ekalinin/Dockerfile.vim'
@@ -136,9 +138,6 @@ set lazyredraw
 set noerrorbells
 set novisualbell
 
-" Remember open buffers
-set viminfo^=%
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Automatic commands
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -152,7 +151,7 @@ autocmd BufReadPost *
 
 autocmd VimEnter * SourceLocalVimrc
 
-autocmd FileType php,perl setlocal shiftwidth=4 tabstop=4 expandtab
+autocmd FileType php,perl,python setlocal shiftwidth=4 tabstop=4 expandtab
 
 autocmd BufRead,BufNewFile .xmobarrc setfiletype haskell
 
@@ -162,11 +161,6 @@ autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 autocmd FileType cpp,hpp set omnifunc=omni#cpp#complete#Main
-
-" Hdevtools key bindings
-au FileType haskell nnoremap <buffer> <F1> :HdevtoolsType<CR>
-au FileType haskell nnoremap <buffer> <silent> <F2> :HdevtoolsClear<CR>
-au FileType haskell nnoremap <buffer> <silent> <F3> :HdevtoolsInfo<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " UI settings
@@ -190,22 +184,39 @@ syntax on
 
 set ruler
 
-" GUI only settings
 if has("gui_running")
-    colorscheme monokai
+  colorscheme monokai
 
-    set guifont=Dejavu\ Sans\ Mono\ 10
+  set guifont=Dejavu\ Sans\ Mono\ 10
 
-    " Remove toolbar
-    set guioptions-=T
+  " Remove toolbar
+  set guioptions-=T
 	set guioptions-=m
 	set guioptions-=L
 	set guioptions-=r
 	set guioptions-=e
-" Console only settings
 else
     colorscheme koehler
 endif
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Functions settings
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Turn off neocomplete  when multiple cursors are active
+"
+function! Multiple_cursors_before()
+    exe 'NeoCompleteLock'
+endfunction
+
+function! Multiple_cursors_after()
+    exe 'NeoCompleteUnlock'
+endfunction
+
+" Strip whitespaces (and \r \n characters)
+function! Trim(input_string)
+  return substitute(a:input_string, '\v^\s*(.{-})[\s\r\n]$','\1','')
+endfunction
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugin settings
@@ -216,54 +227,31 @@ let g:ctrlp_show_hidden=1
 let g:airline_theme='molokai'
 let g:airline_exclude_preview=1
 
-let g:nerdtree_tabs_open_on_gui_startup=0
-
 let g:signify_vcs_list=['git', 'hg', 'svn']
 let g:signify_update_on_bufenter = 1
 
 let g:syntastic_check_on_open=1
 let g:syntastic_enable_signs=1
-let g:syntastic_javascript_checkers = ['jshint']
+let g:syntastic_javascript_checkers = ['eslint']
+" Detect local eslint
+let g:syntastic_javascript_eslint_exec = Trim(system('npm-which eslint'))
 let g:syntastic_php_checkers = ['php']
 
-" Easytags settings
-set tags=./tags
 let g:easytags_async=1
 let g:easytags_dynamic_files=1
 let g:easytags_events = ['BufWritePost']
 
-" Neocomplete settings
 let g:neocomplete#enable_at_startup = 1
 let g:neocomplete#enable_smart_case = 1
 let g:neocomplete#sources#syntax#min_keyword_length = 3
 let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
+let g:neocomplete#sources#omni#input_patterns = {}
 
-"let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
-"let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
-"let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
+let g:CtrlSpaceLoadLastWorkspaceOnStart = 1
+let g:CtrlSpaceSaveWorkspaceOnSwitch = 1
+let g:CtrlSpaceSaveWorkspaceOnExit = 1
 
-" For perlomni.vim setting.
-" https://github.com/c9s/perlomni.vim
-"let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
-" Enable heavy omni completion.
-if !exists('g:neocomplete#sources#omni#input_patterns')
-    let g:neocomplete#sources#omni#input_patterns = {}
-endif
-
-" Set local vimrc filename
 let g:local_vimrc = ".vimrc_local.vim"
-
-" Turn off neocomplete  when multiple cursors are active
-"
-function! Multiple_cursors_before()
-    exe 'NeoCompleteLock'
-    echo 'Disabled autocomplete'
-endfunction
-
-function! Multiple_cursors_after()
-    exe 'NeoCompleteUnlock'
-    echo 'Enabled autocomplete'
-endfunction
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Key bindings
@@ -272,7 +260,6 @@ endfunction
 " Toggle tagbar
 nmap <F8> :TagbarToggle<CR>
 map <Leader>n :NERDTreeToggle<CR>
-map <Leader>t :tabnew<CR>
 
 " Multi cursor
 let g:multi_cursor_next_key="\<C-d>"
