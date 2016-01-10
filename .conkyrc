@@ -8,6 +8,7 @@ temperature_unit celsius
 # Display settings
 alignment top_left
 maximum_width 205
+minimum_size 205
 own_window yes
 own_window_type override
 use_xft yes
@@ -72,7 +73,6 @@ ${color1}${top_io name 2}${alignr 39}${top_io io_perc 2}
 ${color1}${top_io name 3}${alignr 39}${top_io io_perc 3}
 
 ${color2}Uptime: ${color1} ${uptime_short}
-${color2}Last sync: ${color1} ${execi 180 cat /usr/portage/metadata/timestamp.chk}
 
 ${color2}${alignr}${nodename}
 ${color2}${alignr}Kernel: ${kernel}
