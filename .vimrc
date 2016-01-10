@@ -60,6 +60,10 @@ Plugin 'ktvoelker/sbt-vim'
 Plugin 'vim-scripts/OmniCppComplete'
 " Octave plugin
 Plugin 'jvirtanen/vim-octave'
+" Typescript plugin
+Plugin 'leafgarland/typescript-vim'
+" Powershell syntax
+Plugin 'PProvost/vim-ps1'
 
 " Dockerfile syntax
 Plugin 'ekalinin/Dockerfile.vim'
