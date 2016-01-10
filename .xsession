@@ -1,4 +1,6 @@
-# .xinitrc
+#!/bin/sh
+
+export PATH=$PATH:$HOME/.cabal/bin/
 
 xrdb $HOME/.Xresources
 
