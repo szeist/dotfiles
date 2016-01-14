@@ -3,6 +3,7 @@ module Utils.BackgroundImage (drawCenteredBackground) where
 import XMonad
 import Graphics.ImageMagick.MagickWand
 import Filesystem.Path.CurrentOS (decodeString)
+import Data.Text (pack)
 
 import Utils.Screen
 
@@ -37,7 +38,7 @@ getImageDimensions :: String -> IO (Int, Int)
 getImageDimensions fileName = withMagickWandGenesis $ do
     (_,wand) <- magickWand
 
-    readImage wand $ decodeString fileName
+    readImage wand $ pack fileName
     width <- getImageWidth wand
     height <- getImageHeight wand
 

@@ -9,9 +9,11 @@ import System.IO
 import Control.Monad (when)
 import System.Directory (doesFileExist)
 import XMonad.Hooks.SetWMName
+import XMonad.Config (def)
 
 import Utils.BackgroundImage
 import Utils.Screen
+
 
 myWorkspaces :: [ String ]
 myWorkspaces = [ "main", "web", "work", "terminals", "im", "float" ]
@@ -19,7 +21,7 @@ myWorkspaces = [ "main", "web", "work", "terminals", "im", "float" ]
 myLayouts = avoidStruts $
     onWorkspaces [ "web", "work" ] Full $
     onWorkspace  "float" simpleFloat $
-    layoutHook defaultConfig
+    layoutHook def
 
 myManageHook :: ManageHook
 myManageHook = composeAll [
@@ -29,7 +31,7 @@ myManageHook = composeAll [
         (className =? "Skype" <||> className =? "HipChat") --> doShift "im"
     ]
     <+> manageDocks
-    <+> manageHook defaultConfig
+    <+> manageHook def
 
 myStartupHook :: X()
 myStartupHook = do
@@ -49,9 +51,9 @@ main = do
 
     doesFileExist ".Xbackground.png" >>= flip when (drawCenteredBackground ".Xbackground.png")
 
-    spawnConky 45 250
+    doesFileExist ".conkyrc" >>= flip when (spawnConky 45 250)
 
-    xmonad $ defaultConfig {
+    xmonad $ def {
         workspaces = myWorkspaces,
         layoutHook = myLayouts,
         manageHook = myManageHook,
