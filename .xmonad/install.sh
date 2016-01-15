@@ -1,6 +1,7 @@
 #!/bin/bash
 
 # Dependencies
+cabal install system-filepath
 cabal install imagemagick
 
 cabal install xmonad
