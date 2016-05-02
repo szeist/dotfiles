@@ -21,7 +21,7 @@
 
 ! Setup font
 *xterm*faceName: 'Dejavu Sans Mono'
-*xterm*faceSize: 10
+*xterm*faceSize: 12
 
 ! Copy to clipboard
 *xterm*selectToClipboard: true

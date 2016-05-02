@@ -1,0 +1,22 @@
+name:                szeist-xmonadrc
+version:             0.1.0.0
+homepage:            https://github.com/szeist/dotfiles
+license:             MIT
+license-file:        LICENSE
+author:              Istvan Szenasi
+maintainer:          szeist@gmail.com
+build-type:          Simple
+cabal-version:       >=1.8
+
+executable szeist-xmonadrc
+  build-depends:
+    base ==4.8.*,
+    system-filepath,
+    imagesize-conduit,
+    conduit-extra ==1.1.11,
+    imagesize-conduit ==1.1,
+    xmonad,
+    xmonad-contrib
+    -- xmobar
+
+-- cabal install xmobar --flags="with_xft with_utf8 with_iwlib with_alsa with_datezone with_xmp with_threaded"

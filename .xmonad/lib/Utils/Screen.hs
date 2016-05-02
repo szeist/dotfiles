@@ -1,5 +1,6 @@
 module Utils.Screen (getScreenDimensions, getScreens) where
 
+import Control.Applicative
 import XMonad
 import Graphics.X11.Xinerama (getScreenInfo)
 

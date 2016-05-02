@@ -10,9 +10,11 @@ import Control.Monad (when)
 import System.Directory (doesFileExist)
 import XMonad.Hooks.SetWMName
 import XMonad.Config (def)
+import XMonad.Layout.LayoutScreens
 
 import Utils.BackgroundImage
 import Utils.Screen
+import Utils.Outputs
 
 
 myWorkspaces :: [ String ]
@@ -36,13 +38,14 @@ myManageHook = composeAll [
 myStartupHook :: X()
 myStartupHook = do
     setWMName "LG3D"
-    spawn "trayer-srg --edge top --align right --width 5 --height 18 --transparent true --alpha 0 --tint 0x101010 --SetDockType true --SetPartialStrut true"
+    spawn "trayer --edge top --align right --width 5 --height 18 --transparent true --alpha 0 --tint 0x101010 --SetDockType true --SetPartialStrut true --monitor primary"
     spawn "xbindkeys"
 
 myKeys :: [ (String, X ()) ]
 myKeys =
-  [ ("M-q", spawn "killall trayer-srg xbindkeys conky; xmonad --restart"),
-    ("M-S-l", spawn "slock")
+  [ ("M-q", spawn "killall trayer xbindkeys conky; xmonad --restart"),
+    ("M-S-l", spawn "dm-tool lock"),
+    ("M-S-c", io cloneDisplay)
   ]
 
 main :: IO ()
@@ -51,7 +54,7 @@ main = do
 
     doesFileExist ".Xbackground.png" >>= flip when (drawCenteredBackground ".Xbackground.png")
 
-    doesFileExist ".conkyrc" >>= flip when (spawnConky 45 250)
+    -- doesFileExist ".conkyrc" >>= flip when (spawnConky 45 250)
 
     xmonad $ def {
         workspaces = myWorkspaces,
@@ -67,4 +70,5 @@ main = do
     } `additionalKeysP` myKeys
 
 spawnConky :: Int -> Int -> IO()
-spawnConky topOffset rightOffset = getScreenDimensions 0 >>= \dims -> spawn $ "conky -x " ++ show (fst dims - rightOffset) ++ " -y " ++ show topOffset
+spawnConky topOffset rightOffset = getScreenDimensions 0 >>= \dims -> spawn $ "conky -x " ++ show (fst dims - rightOffset) ++ " -y " ++ show topOffset ++ " -X 0"
+

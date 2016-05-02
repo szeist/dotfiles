@@ -15,17 +15,15 @@ Plugin 'gmarik/Vundle.vim'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Color scheme
-Plugin 'lsdr/monokai'
+Plugin 'altercation/vim-colors-solarized'
 " File browser
 Plugin 'scrooloose/nerdtree'
 " VCS support
 Plugin 'vcscommand.vim'
 " Multiple cursors
 Plugin 'terryma/vim-multiple-cursors'
-" Outline viewer
-Plugin 'majutsushi/tagbar'
 " Auto completion popup
-Plugin 'Shougo/neocomplete'
+Plugin 'Shougo/deoplete.nvim'
 " Fuzzy file finder
 Plugin 'kien/ctrlp.vim'
 " Ag searcher (needs silversearcher-ag)
@@ -35,15 +33,16 @@ Plugin 'ciaranm/detectindent'
 " Workspace plugin
 Plugin 'szw/vim-ctrlspace'
 " Improved status/tabline
-Plugin 'bling/vim-airline'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 " Show VCS modifications
 Plugin 'mhinz/vim-signify'
 " Syntax checker
-Plugin 'scrooloose/syntastic'
+Plugin 'benekastah/neomake'
 " CTags updater
 Plugin 'xolox/vim-misc'
 " Automated tag generation
-Plugin 'xolox/vim-easytags'
+" Plugin 'xolox/vim-easytags'
 " Tmux integration
 Plugin 'epeli/slimux'
 " Editorconfig support
@@ -54,8 +53,6 @@ Plugin 'LucHermitte/local_vimrc'
 
 " Scala plugin
 Plugin 'derekwyatt/vim-scala'
-" SBT integration plugin
-Plugin 'ktvoelker/sbt-vim'
 " C++ code completion
 Plugin 'vim-scripts/OmniCppComplete'
 " Octave plugin
@@ -64,6 +61,14 @@ Plugin 'jvirtanen/vim-octave'
 Plugin 'leafgarland/typescript-vim'
 " Powershell syntax
 Plugin 'PProvost/vim-ps1'
+
+" Haskell plugins
+Plugin 'Shougo/vimproc.vim'
+Plugin 'eagletmt/ghcmod-vim'
+Plugin 'eagletmt/neco-ghc'
+
+Plugin 'godlygeek/tabular'
+Plugin 'ervandew/supertab'
 
 " Dockerfile syntax
 Plugin 'ekalinin/Dockerfile.vim'
@@ -132,7 +137,7 @@ set incsearch
 set showmatch
 
 set wildignore+=.git,.hg,.svn
-set wildignore+=*/tmp,*/temp,*/.tmp,*/cache,*/.rsync_cache,*/.sass-cache
+set wildignore+=*/tmp,*/temp,*/.tmp,*/cache,*/.rsync_cache,*/.sass-cache,.cabal-sandbox
 set wildignore+=*.o,*.so,*.swp,*.zip
 set wildignore+=*/node_modules,*/bower_components,*/vendor
 
@@ -165,6 +170,9 @@ autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 autocmd FileType cpp,hpp set omnifunc=omni#cpp#complete#Main
+autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
+
+autocmd! BufRead,BufWritePost * Neomake
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " UI settings
@@ -173,8 +181,8 @@ autocmd FileType cpp,hpp set omnifunc=omni#cpp#complete#Main
 " Always show the status line
 set laststatus=2
 
-" Always show tabline
-set showtabline=2
+" Hide tabline
+set showtabline=0
 
 " Wildmode autocompletion
 set wildmenu
@@ -188,34 +196,24 @@ syntax on
 
 set ruler
 
+let g:solarized_termcolors=256
+set t_Co=256
+
+set background=dark
+colorscheme solarized
+
 if has("gui_running")
-  colorscheme monokai
-
-  set guifont=Dejavu\ Sans\ Mono\ 10
-
   " Remove toolbar
   set guioptions-=T
 	set guioptions-=m
 	set guioptions-=L
 	set guioptions-=r
 	set guioptions-=e
-else
-    colorscheme koehler
 endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Functions settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-" Turn off neocomplete  when multiple cursors are active
-"
-function! Multiple_cursors_before()
-    exe 'NeoCompleteLock'
-endfunction
-
-function! Multiple_cursors_after()
-    exe 'NeoCompleteUnlock'
-endfunction
 
 " Strip whitespaces (and \r \n characters)
 function! Trim(input_string)
@@ -226,34 +224,40 @@ endfunction
 " Plugin settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+let g:deoplete#enable_at_startup = 1
+
 let g:ctrlp_show_hidden=1
 
-let g:airline_theme='molokai'
+let g:airline_theme='solarized'
 let g:airline_exclude_preview=1
 
 let g:signify_vcs_list=['git', 'hg', 'svn']
 let g:signify_update_on_bufenter = 1
 
-let g:syntastic_check_on_open=1
-let g:syntastic_enable_signs=1
-let g:syntastic_javascript_checkers = ['eslint']
+" let g:syntastic_check_on_open=1
+" let g:syntastic_enable_signs=1
+" let g:syntastic_javascript_checkers = ['eslint']
 " Detect local eslint
-let g:syntastic_javascript_eslint_exec = Trim(system('npm-which eslint'))
-let g:syntastic_php_checkers = ['php']
+" let g:syntastic_javascript_eslint_exec = Trim(system('npm-which eslint'))
 
-let g:easytags_async=1
-let g:easytags_dynamic_files=1
-let g:easytags_events = ['BufWritePost']
-
-let g:neocomplete#enable_at_startup = 1
-let g:neocomplete#enable_smart_case = 1
-let g:neocomplete#sources#syntax#min_keyword_length = 3
-let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
-let g:neocomplete#sources#omni#input_patterns = {}
+ 
+" TODO
+" EASYTAGS NEOMAKE
+" let g:easytags_async=1
+"let g:easytags_dynamic_files=1
+" let g:easytags_events = ['BufWritePost']
 
 let g:CtrlSpaceLoadLastWorkspaceOnStart = 1
 let g:CtrlSpaceSaveWorkspaceOnSwitch = 1
 let g:CtrlSpaceSaveWorkspaceOnExit = 1
+
+
+let g:SuperTabDefaultCompletionType = '<c-x><c-o>'
+
+let g:haskellmode_completion_ghc = 1
+
+let g:haskell_tabular = 1
+
 
 let g:local_vimrc = ".vimrc_local.vim"
 
@@ -261,11 +265,8 @@ let g:local_vimrc = ".vimrc_local.vim"
 " Key bindings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" Toggle tagbar
-nmap <F8> :TagbarToggle<CR>
 map <Leader>n :NERDTreeToggle<CR>
 
-" Multi cursor
 let g:multi_cursor_next_key="\<C-d>"
 
 " Slimux key bindings
@@ -273,3 +274,14 @@ map <Leader>s :SlimuxREPLSendLine<CR>
 vmap <Leader>s :SlimuxREPLSendSelection<CR>
 map <Leader>a :SlimuxShellLast<CR>
 map <Leader>k :SlimuxSendKeysLast<CR>
+
+map <silent> tw :GhcModTypeInsert<CR>
+map <silent> ts :GhcModSplitFunCase<CR>
+map <silent> tq :GhcModType<CR>
+map <silent> te :GhcModTypeClear<CR>
+
+vmap a= :Tabularize /=<CR>
+vmap a; :Tabularize /::<CR>
+vmap a- :Tabularize /-><CR>
+
+inoremap <Nul> <c-r>=SuperTabAlternateCompletion("\<lt>c-x>\<lt>c-o>")<cr>

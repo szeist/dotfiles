@@ -1,12 +1,17 @@
 module Utils.BackgroundImage (drawCenteredBackground) where
 
 import XMonad
-import Graphics.ImageMagick.MagickWand
 import Filesystem.Path.CurrentOS (decodeString)
 import Data.Text (pack)
+import Data.Conduit (($$))
+import Data.Conduit.Binary as CB
+import Data.Conduit.ImageSize as CI
+import Control.Monad.Trans.Resource (runResourceT)
 
 import Utils.Screen
 
+-- FIXME don't use xloadimage
+-- FIXME (handle errors)
 drawCenteredBackground :: String -> IO ()
 drawCenteredBackground backgroundImage = do
     (imageWidth, imageHeight) <- getImageDimensions backgroundImage
@@ -34,13 +39,9 @@ getCenterImageOffsets (imageWidth, imageHeight) screenInfo =
       (fromIntegral (rect_height screenInfo) - imageHeight) `div` 2 + fromIntegral (rect_y screenInfo) )
 
 
+-- FIXME (handle errors)
 getImageDimensions :: String -> IO (Int, Int)
-getImageDimensions fileName = withMagickWandGenesis $ do
-    (_,wand) <- magickWand
-
-    readImage wand $ pack fileName
-    width <- getImageWidth wand
-    height <- getImageHeight wand
-
-    return (width, height)
-
+getImageDimensions imagePath = runResourceT $ do
+    msize <- CB.sourceFile imagePath $$ CI.sinkImageSize
+    size <- msize
+    return (width size, height size)

@@ -1,6 +1,6 @@
 #!/bin/sh
 
-export PATH=$PATH:$HOME/.cabal/bin/
+export PATH="$PATH:$HOME/bin:$HOME/.cabal/bin/"
 
 xrdb $HOME/.Xresources
 
@@ -9,11 +9,6 @@ xrandr -s 0
 
 # Set up screen resolution
 xrandr --dpi  96x96
-
-# Set up up external monitor (if connected)
-if [ $(xrandr -q | grep "^VGA1\s\+connected" | wc -l) -eq 1 ]; then
-    xrandr  --output VGA1 --right-of eDP1 --auto;
-fi
 
 # Set arrow cursor
 xsetroot -cursor_name left_ptr
