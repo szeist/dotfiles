@@ -50,25 +50,32 @@ Plugin 'editorconfig/editorconfig-vim'
 " Support local vimrc
 Plugin 'LucHermitte/lh-vim-lib'
 Plugin 'LucHermitte/local_vimrc'
+" Commenter
+Plugin 'scrooloose/nerdcommenter'
 
 " Scala plugin
-Plugin 'derekwyatt/vim-scala'
+" Plugin 'derekwyatt/vim-scala'
 " C++ code completion
-Plugin 'vim-scripts/OmniCppComplete'
+" Plugin 'vim-scripts/OmniCppComplete'
 " Octave plugin
-Plugin 'jvirtanen/vim-octave'
+" Plugin 'jvirtanen/vim-octave'
 " Typescript plugin
 Plugin 'leafgarland/typescript-vim'
 " Powershell syntax
-Plugin 'PProvost/vim-ps1'
+" Plugin 'PProvost/vim-ps1'
+
+" R plugins
+Plugin 'jalvesaq/Nvim-R'
+Plugin 'lyuts/vim-rtags'
 
 " Haskell plugins
 Plugin 'Shougo/vimproc.vim'
 Plugin 'eagletmt/ghcmod-vim'
 Plugin 'eagletmt/neco-ghc'
+Plugin 'neovimhaskell/haskell-vim'
 
-Plugin 'godlygeek/tabular'
-Plugin 'ervandew/supertab'
+" PHP refactor tool
+" Plugin 'adoy/vim-php-refactoring-toolbox'
 
 " Dockerfile syntax
 Plugin 'ekalinin/Dockerfile.vim'
@@ -82,6 +89,8 @@ Plugin 'cakebaker/scss-syntax.vim'
 Plugin 'evidens/vim-twig'
 " Jade syntax
 Plugin 'digitaltoad/vim-jade'
+" NodeJS tools
+Plugin 'moll/vim-node'
 
 call vundle#end()
 
@@ -137,6 +146,8 @@ set incsearch
 set showmatch
 
 set wildignore+=.git,.hg,.svn
+set wildignore+=*/tags
+set wildignore+=*/dist
 set wildignore+=*/tmp,*/temp,*/.tmp,*/cache,*/.rsync_cache,*/.sass-cache,.cabal-sandbox
 set wildignore+=*.o,*.so,*.swp,*.zip
 set wildignore+=*/node_modules,*/bower_components,*/vendor
@@ -169,7 +180,7 @@ autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-autocmd FileType cpp,hpp set omnifunc=omni#cpp#complete#Main
+"autocmd FileType cpp,hpp set omnifunc=omni#cpp#complete#Main
 autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
 
 autocmd! BufRead,BufWritePost * Neomake
@@ -205,10 +216,10 @@ colorscheme solarized
 if has("gui_running")
   " Remove toolbar
   set guioptions-=T
-	set guioptions-=m
-	set guioptions-=L
-	set guioptions-=r
-	set guioptions-=e
+  set guioptions-=m
+  set guioptions-=L
+  set guioptions-=r
+  set guioptions-=e
 endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -225,6 +236,9 @@ endfunction
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 let g:deoplete#enable_at_startup = 1
+let g:deoplete#omni#input_patterns = {}
+let g:deoplete#omni#input_patterns.php = '\w{3,}|[^. \t]->\w*|\w{3,}::\w*'
+let g:deoplete#max_list = 20
 
 let g:ctrlp_show_hidden=1
 
@@ -240,24 +254,47 @@ let g:signify_update_on_bufenter = 1
 " Detect local eslint
 " let g:syntastic_javascript_eslint_exec = Trim(system('npm-which eslint'))
 
- 
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 0
+let g:syntastic_check_on_open = 0
+let g:syntastic_check_on_wq = 0
+
+
 " TODO
 " EASYTAGS NEOMAKE
 " let g:easytags_async=1
 "let g:easytags_dynamic_files=1
 " let g:easytags_events = ['BufWritePost']
 
+" CtrlSpace configuration
 let g:CtrlSpaceLoadLastWorkspaceOnStart = 1
 let g:CtrlSpaceSaveWorkspaceOnSwitch = 1
 let g:CtrlSpaceSaveWorkspaceOnExit = 1
 
+" Fix neovim capture
+if has('nvim')
+  nmap <c-space> <nul> 
+end
 
-let g:SuperTabDefaultCompletionType = '<c-x><c-o>'
 
-let g:haskellmode_completion_ghc = 1
+let g:haskell_enable_quantification = 1 
+let g:haskell_enable_recursivedo = 1
+let g:haskell_enable_arrowsyntax = 1
+let g:haskell_enable_pattern_synonyms = 1
+let g:haskell_enable_typeroles = 1
+let g:haskell_enable_static_pointers = 1
+let g:haskell_backpack = 1
 
-let g:haskell_tabular = 1
+"let g:SuperTabDefaultCompletionType = '<c-x><c-o>'
 
+"let g:haskellmode_completion_ghc = 1
+
+"let g:haskell_tabular = 1
+
+let g:ag_prg='ag -S --nocolor --nogroup --column --ignore node_modules --ignore dist --ignore tags'
 
 let g:local_vimrc = ".vimrc_local.vim"
 
@@ -280,8 +317,4 @@ map <silent> ts :GhcModSplitFunCase<CR>
 map <silent> tq :GhcModType<CR>
 map <silent> te :GhcModTypeClear<CR>
 
-vmap a= :Tabularize /=<CR>
-vmap a; :Tabularize /::<CR>
-vmap a- :Tabularize /-><CR>
-
-inoremap <Nul> <c-r>=SuperTabAlternateCompletion("\<lt>c-x>\<lt>c-o>")<cr>
+map <Leader>s :SyntasticToggleMode<CR>

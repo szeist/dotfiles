@@ -22,13 +22,21 @@
 ! Setup font
 *xterm*faceName: 'Dejavu Sans Mono'
 *xterm*faceSize: 12
+*xterm*faceSize1: 10
+*xterm*faceSize2: 12
+*xterm*faceSize3: 14
+*xterm*faceSize4: 18
+*xterm*faceSize5: 24
+*xterm*faceSize6: 36
 
 ! Copy to clipboard
 *xterm*selectToClipboard: true
 
 ! Paste from clipboard
+! Zoom in/out
 xterm.VT100.Translations: #override \
-    Shift <KeyPress> Insert: insert-selection(CLIPBOARD) \
-    <Btn2Up>: insert-selection(SELECT, CUT_BUFFER0) \
-    ~Shift<BtnUp>: select-end(PRIMARY, CUT_BUFFER0) \
-    Shift<BtnUp>: select-end(CLIPBOARD, CUT_BUFFER1)
+  Ctrl Shift <KeyPress> +: larger-vt-font() \n\
+  Ctrl Shift <KeyPress> -: smaller-vt-font() \n\
+	Ctrl Shift <KeyPress> 0: set-vt-font(d) \n\
+  Ctrl Shift <KeyPress> C: copy-selection(CLIPBOARD) \n\
+  Ctrl Shift <KeyPress> V: insert-selection(CLIPBOARD)

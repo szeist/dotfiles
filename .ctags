@@ -4,9 +4,10 @@
 --exclude=*.min.js
 --exclude=vendors
 --exclude=node_modules
-
+--recurse=yes
 --totals=yes
 --tag-relative=yes
+
 --PHP-kinds=+cf
 --regex-PHP=/abstract class ([^ ]*)/\1/c/
 --regex-PHP=/interface ([^ ]*)/\1/c/
@@ -68,4 +69,4 @@
 
 --langmap=PHP:+.class
 
---languages=js,php,sql,typescript
+--languages=javascript,js,php,sql,typescript,coffee,R,c,c++

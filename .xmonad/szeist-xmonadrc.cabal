@@ -8,15 +8,15 @@ maintainer:          szeist@gmail.com
 build-type:          Simple
 cabal-version:       >=1.8
 
-executable szeist-xmonadrc
+Library
   build-depends:
     base ==4.8.*,
+    xmonad ==0.12,
+    xmonad-contrib ==0.12,
     system-filepath,
     imagesize-conduit,
-    conduit-extra ==1.1.11,
-    imagesize-conduit ==1.1,
-    xmonad,
-    xmonad-contrib
+    conduit-extra ==1.1.13.1,
+    imagesize-conduit ==1.1
     -- xmobar
 
 -- cabal install xmobar --flags="with_xft with_utf8 with_iwlib with_alsa with_datezone with_xmp with_threaded"

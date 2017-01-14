@@ -1,7 +1,7 @@
-module Utils.Outputs (cloneDisplay) where
+module Utils.Outputs (applyConfiguration) where
 
 import Data.Maybe (fromJust)
-import Data.List (maximumBy)
+import Data.List (maximumBy, find)
 import Data.Function (on)
 import Graphics.X11.Xrandr
 import XMonad
@@ -13,14 +13,27 @@ data OutputInfo = OutputInfo {
 }
 
 
-cloneDisplay :: IO()
-cloneDisplay = do
+applyConfiguration :: [[String]] -> IO()
+applyConfiguration configurations = do
   dpy <- openDisplay ""
-  disconnectedOutputs <- getDisconnectedOutputs dpy
   connectedOutputs <- getOutputInfos dpy
 
+  let configuration = find (matchConfiguration $ map (\o -> xrr_oi_name(output o)) connectedOutputs) configurations
+
+  removeDisconnected dpy
+
+  case configuration of
+    Nothing -> mapM_ (spawn . getConnectedCommand) connectedOutputs
+    Just conf -> mapM_ print $ getDisplayConfigurationCommands $ findOutputConfigurations conf connectedOutputs
+
+
+matchConfiguration :: [String] -> [String] -> Bool
+matchConfiguration connectedNames = all (`elem` connectedNames)
+
+
+removeDisconnected dpy = do
+  disconnectedOutputs <- getDisconnectedOutputs dpy
   mapM_ (spawn . getDisconnectedCommand) disconnectedOutputs
-  mapM_ (spawn . getConnectedCommand) connectedOutputs
 
 
 getDisconnectedCommand :: XRROutputInfo -> [Char]
@@ -30,12 +43,32 @@ getDisconnectedCommand outputInfo =
   " --off"
 
 
+findOutputConfigurations :: [String] -> [OutputInfo] -> [OutputInfo]
+findOutputConfigurations conf outputs = map (\n -> fromJust $ find (\o -> xrr_oi_name(output o) == n) outputs) conf
+
+
+getDisplayConfigurationCommands :: [OutputInfo] -> [String]
+getDisplayConfigurationCommands outputs = getFirstOutputCommand outputs : getAdditionalOutputCommands outputs
+
+
+getFirstOutputCommand :: [OutputInfo] -> String
+getFirstOutputCommand outputs = getConnectedCommand $ last outputs
+
+
+getAdditionalOutputCommands :: [OutputInfo] -> [String]
+getAdditionalOutputCommands outputs = map getAlignedOutputCommand $ reverse $ zip outputs $ tail outputs
+
+
 getConnectedCommand :: OutputInfo -> [Char]
 getConnectedCommand outputInfo =
   "xrandr --output " ++
   xrr_oi_name(output outputInfo) ++
   " --mode " ++
   xrr_mi_name(mode outputInfo)
+
+
+getAlignedOutputCommand :: (OutputInfo, OutputInfo) -> String
+getAlignedOutputCommand (cur, nxt) = getConnectedCommand cur ++ " --left-of " ++ xrr_oi_name(output nxt)
 
 
 getOutputInfos :: Display -> IO [OutputInfo]
@@ -77,4 +110,3 @@ getResources :: Display -> IO XRRScreenResources
 getResources dpy = do
   rootw <- rootWindow dpy $ defaultScreen dpy
   fromJust <$> xrrGetScreenResources dpy rootw
-
