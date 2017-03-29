@@ -54,7 +54,7 @@ Plugin 'LucHermitte/local_vimrc'
 Plugin 'scrooloose/nerdcommenter'
 
 " Scala plugin
-" Plugin 'derekwyatt/vim-scala'
+ Plugin 'derekwyatt/vim-scala'
 " C++ code completion
 " Plugin 'vim-scripts/OmniCppComplete'
 " Octave plugin
@@ -69,10 +69,13 @@ Plugin 'jalvesaq/Nvim-R'
 Plugin 'lyuts/vim-rtags'
 
 " Haskell plugins
+"Plugin 'eagletmt/ghcmod-vim'
+"Plugin 'eagletmt/neco-ghc'
+"Plugin 'neovimhaskell/haskell-vim'
+
 Plugin 'Shougo/vimproc.vim'
-Plugin 'eagletmt/ghcmod-vim'
-Plugin 'eagletmt/neco-ghc'
-Plugin 'neovimhaskell/haskell-vim'
+Plugin 'Shougo/unite.vim'
+Plugin 'm2mdas/phpcomplete-extended'
 
 " PHP refactor tool
 " Plugin 'adoy/vim-php-refactoring-toolbox'
@@ -181,7 +184,8 @@ autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 "autocmd FileType cpp,hpp set omnifunc=omni#cpp#complete#Main
-autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
+"autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
+autocmd  FileType  php setlocal omnifunc=phpcomplete_extended#CompletePHP
 
 autocmd! BufRead,BufWritePost * Neomake
 
@@ -237,7 +241,7 @@ endfunction
 
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#omni#input_patterns = {}
-let g:deoplete#omni#input_patterns.php = '\w{3,}|[^. \t]->\w*|\w{3,}::\w*'
+" let g:deoplete#omni#input_patterns.php = '\w{3,}|[^. \t]->\w*|\w{3,}::\w*'
 let g:deoplete#max_list = 20
 
 let g:ctrlp_show_hidden=1
@@ -253,15 +257,6 @@ let g:signify_update_on_bufenter = 1
 " let g:syntastic_javascript_checkers = ['eslint']
 " Detect local eslint
 " let g:syntastic_javascript_eslint_exec = Trim(system('npm-which eslint'))
-
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 0
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 0
-
 
 " TODO
 " EASYTAGS NEOMAKE
@@ -280,13 +275,13 @@ if has('nvim')
 end
 
 
-let g:haskell_enable_quantification = 1 
-let g:haskell_enable_recursivedo = 1
-let g:haskell_enable_arrowsyntax = 1
-let g:haskell_enable_pattern_synonyms = 1
-let g:haskell_enable_typeroles = 1
-let g:haskell_enable_static_pointers = 1
-let g:haskell_backpack = 1
+"let g:haskell_enable_quantification = 1 
+"let g:haskell_enable_recursivedo = 1
+"let g:haskell_enable_arrowsyntax = 1
+"let g:haskell_enable_pattern_synonyms = 1
+"let g:haskell_enable_typeroles = 1
+"let g:haskell_enable_static_pointers = 1
+"let g:haskell_backpack = 1
 
 "let g:SuperTabDefaultCompletionType = '<c-x><c-o>'
 
@@ -307,14 +302,12 @@ map <Leader>n :NERDTreeToggle<CR>
 let g:multi_cursor_next_key="\<C-d>"
 
 " Slimux key bindings
-map <Leader>s :SlimuxREPLSendLine<CR>
-vmap <Leader>s :SlimuxREPLSendSelection<CR>
 map <Leader>a :SlimuxShellLast<CR>
+map <Leader>s :SlimuxREPLSendSelection<CR>
+map <Leader>l :SlimuxREPLSendLine<CR>
 map <Leader>k :SlimuxSendKeysLast<CR>
 
 map <silent> tw :GhcModTypeInsert<CR>
 map <silent> ts :GhcModSplitFunCase<CR>
 map <silent> tq :GhcModType<CR>
 map <silent> te :GhcModTypeClear<CR>
-
-map <Leader>s :SyntasticToggleMode<CR>
