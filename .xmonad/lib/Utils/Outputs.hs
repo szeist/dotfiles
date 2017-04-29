@@ -18,7 +18,14 @@ applyConfiguration configurations = do
   dpy <- openDisplay ""
   connectedOutputs <- getOutputInfos dpy
 
+  mapM_ putStrLn $ map (\o -> xrr_oi_name(output o)) connectedOutputs
+  mapM_ print $ configurations
+
   let configuration = find (matchConfiguration $ map (\o -> xrr_oi_name(output o)) connectedOutputs) configurations
+
+  case configuration of
+    Nothing -> putStrLn "NOT FOUND"
+    Just conf -> mapM_ (putStrLn) conf
 
   removeDisconnected dpy
 

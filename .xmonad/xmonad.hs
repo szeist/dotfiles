@@ -18,7 +18,7 @@ import Utils.Outputs
 
 
 myDisplatConfigurations :: [[String]]
-myDisplatConfigurations = [["DP2-2", "DP2-1", "eDP1"]]
+myDisplatConfigurations = [["DP2-2", "DP2-1", "eDP1"], ["VGA-1", "eDP-1"]]
 
 
 myWorkspaces :: [ String ]
@@ -45,9 +45,8 @@ myManageHook = composeAll [
 myStartupHook :: X()
 myStartupHook = do
     setWMName "LG3D"
-    spawn "trayer --edge top --align right --width 5 --height 18 --transparent true --alpha 0 --tint 0x101010 --SetDockType true --SetPartialStrut true --monitor primary"
+    spawn "trayer --edge top --align right --width 5 --height 18 --transparent true --alpha 0 --tint 0x101010 --SetDockType true --SetPartialStrut true --monitor 1"
     spawn "xbindkeys"
-
 
 myKeys :: [ (String, X ()) ]
 myKeys =
@@ -67,6 +66,7 @@ main = do
         workspaces = myWorkspaces,
         layoutHook = myLayouts,
         manageHook = myManageHook,
+        handleEventHook = handleEventHook defaultConfig <+> docksEventHook,
         focusedBorderColor = "#00A300",
         logHook = dynamicLogWithPP xmobarPP {
             ppOutput = hPutStrLn xmproc,
