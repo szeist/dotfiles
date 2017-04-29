@@ -4,6 +4,8 @@
 --exclude=*.min.js
 --exclude=vendors
 --exclude=node_modules
+--exclude=__pycache__
+--exclude=venv
 --recurse=yes
 --totals=yes
 --tag-relative=yes
@@ -69,4 +71,4 @@
 
 --langmap=PHP:+.class
 
---languages=javascript,js,php,sql,typescript,coffee,R,c,c++
+--languages=javascript,js,php,sql,typescript,coffee,R,c,c++,python
