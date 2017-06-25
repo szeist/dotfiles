@@ -95,6 +95,10 @@ Plugin 'digitaltoad/vim-jade'
 " NodeJS tools
 Plugin 'moll/vim-node'
 
+" Markdown preview
+" apt-get install markdown
+Plugin 'vim-markdown-preview'
+
 call vundle#end()
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -258,12 +262,6 @@ let g:signify_update_on_bufenter = 1
 " Detect local eslint
 " let g:syntastic_javascript_eslint_exec = Trim(system('npm-which eslint'))
 
-" TODO
-" EASYTAGS NEOMAKE
-" let g:easytags_async=1
-"let g:easytags_dynamic_files=1
-" let g:easytags_events = ['BufWritePost']
-
 " CtrlSpace configuration
 let g:CtrlSpaceLoadLastWorkspaceOnStart = 1
 let g:CtrlSpaceSaveWorkspaceOnSwitch = 1
@@ -292,6 +290,9 @@ end
 let g:ag_prg='ag -S --nocolor --nogroup --column --ignore node_modules --ignore dist --ignore tags'
 
 let g:local_vimrc = ".vimrc_local.vim"
+
+let vim_markdown_preview_toggle=1
+let vim_markdown_preview_hotkey='<C-m>'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Key bindings
