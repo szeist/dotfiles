@@ -31,7 +31,7 @@ applyConfiguration configurations = do
 
   case configuration of
     Nothing -> mapM_ (spawn . getConnectedCommand) connectedOutputs
-    Just conf -> mapM_ print $ getDisplayConfigurationCommands $ findOutputConfigurations conf connectedOutputs
+    Just conf -> mapM_ spawn $ getDisplayConfigurationCommands $ findOutputConfigurations conf connectedOutputs
 
 
 matchConfiguration :: [String] -> [String] -> Bool
