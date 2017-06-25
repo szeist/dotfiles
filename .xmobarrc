@@ -8,9 +8,10 @@ Config {
         Run Wireless "wlan0" ["-L", "40", "-H", "70", "--normal", "yellow", "--high", "green", "--low", "red", "-t", "<essid> (<quality>%)"] 60,
         Run BatteryP ["BAT0", "BAT1"] ["-t", "<acstatus>", "-L", "10", "-H", "80", "-l", "red", "-h", "green", "--", "-O", "Charging", "-o", "Batt: <left>%" ] 120,
         Run Volume "default" "Master" [] 10,
+        Run Kbd [("latin", "US"), ("hu", "HU")],
         Run StdinReader
     ],
     sepChar = "%",
     alignSep = "}{",
-    template = "%StdinReader% } { %battery% | %wlan0wi% | %default:Master% | <fc=#ee9a00>%date%</fc> |"
+    template = "%StdinReader% } { %kbd%  | %battery% | %wlo1wi% | %default:Master% | <fc=#ee9a00>%date%</fc> |"
 }
