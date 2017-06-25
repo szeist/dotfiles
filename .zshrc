@@ -4,7 +4,7 @@ export EDITOR=/usr/bin/nvim
 ZSH_THEME="ys"
 HIST_STAMPS="yyyy-mm-dd"
 
-plugins=(adb bundler cabal capistrano composer django docker docker-compose gem git grunt gulp heroku httpie nmap node npm nvm pip python rake ruby rvm systemd tmux tmuxinator vagrant virtualenvwrapper)
+plugins=(adb bundler cabal capistrano composer django docker docker-compose gem git grunt gulp heroku httpie nmap node npm nvm pip python rake ruby rvm ssh-agent systemd tmux tmuxinator vagrant virtualenvwrapper)
 
 source $ZSH/oh-my-zsh.sh
 
