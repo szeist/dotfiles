@@ -1,5 +1,6 @@
 export ZSH=$HOME/.oh-my-zsh
 export EDITOR=/usr/bin/nvim
+export TERM=xterm-256color
 
 ZSH_THEME="ys"
 HIST_STAMPS="yyyy-mm-dd"
