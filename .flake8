@@ -1,2 +1,2 @@
 [flake8]
-ignore = D100,D101,D102,D103,D105
+ignore = C0111,D100,D101,D102,D103,D105

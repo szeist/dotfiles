@@ -6,3 +6,6 @@ libasound-dev
 c2hs
 libiw-dev
 libxinerama-dev
+libmagickcore-dev 
+libmagickwand-dev
+xloadimage

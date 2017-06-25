@@ -31,7 +31,7 @@ Plugin 'rking/ag.vim'
 " Indet detectuin plugin
 Plugin 'ciaranm/detectindent'
 " Workspace plugin
-Plugin 'szw/vim-ctrlspace'
+Plugin 'vim-ctrlspace/vim-ctrlspace'
 " Improved status/tabline
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
