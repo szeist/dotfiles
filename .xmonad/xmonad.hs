@@ -36,7 +36,7 @@ myManageHook = composeAll [
         className =? "spotify" --> doFloat,
         className =? "google-chrome" --> doShift "web",
         className =? "Firefox" --> doShift "web",
-        (className =? "Skype" <||> className =? "HipChat") --> doShift "im"
+        (className =? "Skype" <||> className =? "HipChat" <||> className =? "Slack") --> doShift "im"
     ]
     <+> manageDocks
     <+> manageHook def
