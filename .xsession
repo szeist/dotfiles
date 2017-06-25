@@ -23,7 +23,7 @@ xset b off
 xset r rate 200 30
 
 # Set keyboard layout
-setxkbmap -layout en_US
+setxkbmap -layout "en_US,hu" -option grp:shift_caps_toggle
 
 # Load key mappings
 xmodmap .Xmodmap
