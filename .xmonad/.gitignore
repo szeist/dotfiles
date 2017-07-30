@@ -1,6 +1,7 @@
 dist/
 xmonad-*-linux
 xmonad.errors
+xmonad.state
 
 *.hi
 *.o
