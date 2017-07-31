@@ -46,7 +46,7 @@ myManageHook = composeAll [
 myStartupHook :: X()
 myStartupHook = do
     setWMName "LG3D"
-    spawn "trayer --edge top --align right --width 5 --height 18 --transparent true --alpha 0 --tint 0x101010 --SetDockType true --SetPartialStrut true --monitor 1"
+    spawn "trayer --edge top --align right --width 5 --height 18 --transparent true --alpha 0 --tint 0x101010 --SetDockType true --SetPartialStrut true --monitor 2"
     spawn "xbindkeys"
 
 myKeys :: [ (String, X ()) ]
