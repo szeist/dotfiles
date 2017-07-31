@@ -41,8 +41,6 @@ Plugin 'mhinz/vim-signify'
 Plugin 'benekastah/neomake'
 " CTags updater
 Plugin 'xolox/vim-misc'
-" Automated tag generation
-" Plugin 'xolox/vim-easytags'
 " Tmux integration
 Plugin 'epeli/slimux'
 " Editorconfig support
@@ -52,6 +50,8 @@ Plugin 'LucHermitte/lh-vim-lib'
 Plugin 'LucHermitte/local_vimrc'
 " Commenter
 Plugin 'scrooloose/nerdcommenter'
+" Test runner
+Plugin 'janko-m/vim-test'
 
 " Scala plugin
  Plugin 'derekwyatt/vim-scala'
@@ -91,7 +91,7 @@ Plugin 'cakebaker/scss-syntax.vim'
 " Twig syntax
 Plugin 'evidens/vim-twig'
 " Jade syntax
-Plugin 'digitaltoad/vim-jade'
+Plugin 'digitaltoad/vim-pug'
 " NodeJS tools
 Plugin 'moll/vim-node'
 
@@ -120,9 +120,6 @@ set noswapfile
 
 " Hide abandoned buffers
 set hid
-
-" Enable mouse in all modes
-set mouse=a
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Indent settings
@@ -156,8 +153,8 @@ set wildignore+=.git,.hg,.svn
 set wildignore+=*/tags
 set wildignore+=*/dist
 set wildignore+=*/tmp,*/temp,*/.tmp,*/cache,*/.rsync_cache,*/.sass-cache,.cabal-sandbox
-set wildignore+=*.o,*.so,*.swp,*.zip
-set wildignore+=*/node_modules,*/bower_components,*/vendor
+set wildignore+=*.o,*.so,*.swp,*.zip,*.pyc
+set wildignore+=*/node_modules,*/bower_components,*/vendor,*/__pycache__
 
 " Don't redraw while running macros
 set lazyredraw
@@ -172,9 +169,9 @@ set novisualbell
 " Remember last position
 " http://amix.dk/vim/vimrc.html
 autocmd BufReadPost *
-            \ if line("'\"") > 0 && line("'\"") <= line("$") |
-            \   exe "normal! g`\"" |
-            \ endif
+  \ if line("'\"") > 0 && line("'\"") <= line("$") |
+  \   exe "normal! g`\"" |
+  \ endif
 
 autocmd VimEnter * SourceLocalVimrc
 
@@ -187,11 +184,14 @@ autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-"autocmd FileType cpp,hpp set omnifunc=omni#cpp#complete#Main
-"autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
-autocmd  FileType  php setlocal omnifunc=phpcomplete_extended#CompletePHP
+autocmd FileType cpp,hpp set omnifunc=omni#cpp#complete#Main
+autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
+autocmd FileType php setlocal omnifunc=phpcomplete_extended#CompletePHP
 
 autocmd! BufRead,BufWritePost * Neomake
+
+autocmd BufWritePost *.py,*.rb,*.go,*.java,*.scala,*.php,*.js,*.ts,*.hs,*.R
+  \ call jobstart(['ctags', '-R', '.'])
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " UI settings
@@ -220,15 +220,6 @@ set t_Co=256
 
 set background=dark
 colorscheme solarized
-
-if has("gui_running")
-  " Remove toolbar
-  set guioptions-=T
-  set guioptions-=m
-  set guioptions-=L
-  set guioptions-=r
-  set guioptions-=e
-endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Functions settings

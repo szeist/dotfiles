@@ -28,5 +28,10 @@ setxkbmap -layout "en_US,hu" -option grp:shift_caps_toggle
 # Load key mappings
 xmodmap .Xmodmap
 
+# Start insync-headless
+which insync-headless > /dev/null
+[ $? -eq 0 ] && insync-headless start
+
 # Start XMonad
+export SHELL=/usr/bin/zsh
 exec dbus-launch --exit-with-session --sh-syntax xmonad

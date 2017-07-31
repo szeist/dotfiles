@@ -71,4 +71,4 @@
 
 --langmap=PHP:+.class
 
---languages=javascript,js,php,sql,typescript,coffee,R,c,c++,python
+--languages=javascript,js,php,sql,typescript,coffee,c,c++,python

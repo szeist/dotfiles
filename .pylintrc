@@ -1,0 +1,11 @@
+[MESSAGES CONTROL]
+#C0111 Missing docstring
+#C0103 Invalid constant name
+#R0903 Too few public methods
+disable=C0111,C0103,R0903
+
+[TYPECHECK]
+ignored-modules=flask_sqlalchemy
+ignored-classes=scoped_session,Resource
+
+extension-pkg-whitelist=lxml

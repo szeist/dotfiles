@@ -19,6 +19,7 @@ import Utils.Outputs
 
 myDisplatConfigurations :: [[String]]
 myDisplatConfigurations = [["DP2-2", "DP2-1", "eDP1"], ["VGA-1", "eDP-1"]]
+-- myDisplatConfigurations = []
 
 
 myWorkspaces :: [ String ]
@@ -52,7 +53,7 @@ myKeys :: [ (String, X ()) ]
 myKeys =
   [ ("M-q", spawn "killall trayer xbindkeys conky; xmonad --restart"),
     ("M-S-l", spawn "dm-tool lock"),
-    ("M-c", io $ applyConfiguration myDisplatConfigurations)
+    ("M-m", io $ applyConfiguration myDisplatConfigurations)
   ]
 
 
