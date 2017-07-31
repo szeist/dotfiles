@@ -1,4 +1,4 @@
 tags
 .vimrc_local.vim
 __pycache__/
-
+.vscode
