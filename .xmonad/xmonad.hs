@@ -18,7 +18,7 @@ import Utils.Outputs
 
 
 myDisplatConfigurations :: [[String]]
-myDisplatConfigurations = [["DP2-2", "DP2-1", "eDP1"], ["VGA-1", "eDP-1"]]
+myDisplatConfigurations = [["DP2-2", "DP2-1", "eDP1"], ["eDP-1", "VGA-1"]]
 -- myDisplatConfigurations = []
 
 
