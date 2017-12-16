@@ -42,40 +42,40 @@ Plugin 'benekastah/neomake'
 " CTags updater
 Plugin 'xolox/vim-misc'
 " Tmux integration
-Plugin 'epeli/slimux'
+" Plugin 'epeli/slimux'
 " Editorconfig support
 Plugin 'editorconfig/editorconfig-vim'
 " Support local vimrc
-Plugin 'LucHermitte/lh-vim-lib'
-Plugin 'LucHermitte/local_vimrc'
+" Plugin 'LucHermitte/lh-vim-lib'
+" Plugin 'LucHermitte/local_vimrc'
 " Commenter
 Plugin 'scrooloose/nerdcommenter'
 " Test runner
-Plugin 'janko-m/vim-test'
+" Plugin 'janko-m/vim-test'
 
 " Scala plugin
- Plugin 'derekwyatt/vim-scala'
+" Plugin 'derekwyatt/vim-scala'
 " C++ code completion
 " Plugin 'vim-scripts/OmniCppComplete'
 " Octave plugin
 " Plugin 'jvirtanen/vim-octave'
 " Typescript plugin
-Plugin 'leafgarland/typescript-vim'
+" Plugin 'leafgarland/typescript-vim'
 " Powershell syntax
 " Plugin 'PProvost/vim-ps1'
 
 " R plugins
-Plugin 'jalvesaq/Nvim-R'
-Plugin 'lyuts/vim-rtags'
+" Plugin 'jalvesaq/Nvim-R'
+" Plugin 'lyuts/vim-rtags'
 
 " Haskell plugins
 "Plugin 'eagletmt/ghcmod-vim'
 "Plugin 'eagletmt/neco-ghc'
 "Plugin 'neovimhaskell/haskell-vim'
 
-Plugin 'Shougo/vimproc.vim'
-Plugin 'Shougo/unite.vim'
-Plugin 'm2mdas/phpcomplete-extended'
+" Plugin 'Shougo/vimproc.vim'
+" Plugin 'Shougo/unite.vim'
+" Plugin 'm2mdas/phpcomplete-extended'
 
 " PHP refactor tool
 " Plugin 'adoy/vim-php-refactoring-toolbox'
@@ -97,7 +97,7 @@ Plugin 'moll/vim-node'
 
 " Markdown preview
 " apt-get install markdown
-Plugin 'vim-markdown-preview'
+" Plugin 'vim-markdown-preview'
 
 call vundle#end()
 
@@ -172,8 +172,6 @@ autocmd BufReadPost *
   \ if line("'\"") > 0 && line("'\"") <= line("$") |
   \   exe "normal! g`\"" |
   \ endif
-
-autocmd VimEnter * SourceLocalVimrc
 
 autocmd FileType php,perl,python setlocal shiftwidth=4 tabstop=4 expandtab
 
@@ -264,23 +262,7 @@ if has('nvim')
 end
 
 
-"let g:haskell_enable_quantification = 1 
-"let g:haskell_enable_recursivedo = 1
-"let g:haskell_enable_arrowsyntax = 1
-"let g:haskell_enable_pattern_synonyms = 1
-"let g:haskell_enable_typeroles = 1
-"let g:haskell_enable_static_pointers = 1
-"let g:haskell_backpack = 1
-
-"let g:SuperTabDefaultCompletionType = '<c-x><c-o>'
-
-"let g:haskellmode_completion_ghc = 1
-
-"let g:haskell_tabular = 1
-
 let g:ag_prg='ag -S --nocolor --nogroup --column --ignore node_modules --ignore dist --ignore tags'
-
-let g:local_vimrc = ".vimrc_local.vim"
 
 let vim_markdown_preview_toggle=1
 let vim_markdown_preview_hotkey='<C-m>'
