@@ -1,16 +1,23 @@
 export ZSH=$HOME/.oh-my-zsh
 export EDITOR=/usr/bin/nvim
-export TERM=xterm-256color
+
+export WORKON_HOME=~/.virtuanenvs
+export GOPATH=~/.go
+export PATH=$PATH:~/.go/bin:~/.gem/ruby/2.3.0/bin
+
+# Predict magic
+export PREDICT_SRC="$HOME/src/emarsys/predict"
+export PYTHONPATH="$PREDICT_SRC"
+export DROPBOX="$PREDICT_SRC/test-dropbox"
+export DROPBOX_PROPERTIES="$DROPBOX/dropbox.properties"
 
 ZSH_THEME="ys"
 HIST_STAMPS="yyyy-mm-dd"
 
-plugins=(adb bundler cabal capistrano composer django docker docker-compose gem git grunt gulp heroku nmap node npm nvm pip python rake ruby rvm systemd tmux tmuxinator vagrant virtualenvwrapper)
+plugins=(adb bundler cabal capistrano composer django docker docker-compose gem git grunt gulp heroku nmap node npm nvm pip python rake ruby rvm systemd virtualenvwrapper)
 
 source $ZSH/oh-my-zsh.sh
 
-alias svndiff='svn diff | colordiff | less'
-alias bfg='java -jar ~/opt/bfg.jar'
 alias xclip='xclip -selection c'
 
 alias ssh="(ssh-add -l > /dev/null || ssh-add) && ssh"
