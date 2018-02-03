@@ -7,14 +7,14 @@ export PATH=$PATH:~/.go/bin:~/.gem/ruby/2.3.0/bin
 
 # Predict magic
 export PREDICT_SRC="$HOME/src/emarsys/predict"
-export PYTHONPATH="$PREDICT_SRC"
+#export PYTHONPATH="$PREDICT_SRC"
 export DROPBOX="$PREDICT_SRC/test-dropbox"
 export DROPBOX_PROPERTIES="$DROPBOX/dropbox.properties"
 
 ZSH_THEME="ys"
 HIST_STAMPS="yyyy-mm-dd"
 
-plugins=(adb bundler cabal capistrano composer django docker docker-compose gem git grunt gulp heroku nmap node npm nvm pip python rake ruby rvm systemd virtualenvwrapper)
+plugins=(adb bundler cabal capistrano composer django docker docker-compose gem git grunt gulp heroku nmap node npm nvm pip python rake ruby rvm systemd task virtualenvwrapper)
 
 source $ZSH/oh-my-zsh.sh
 
