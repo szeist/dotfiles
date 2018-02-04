@@ -32,7 +32,7 @@ class Py3status:
     def __init__(self):
         self._dbus = dbus.SystemBus()
 
-    def openvpn(self):
+    def nm_vpn_names(self):
         """
         Returns connected vpn network names
         """
