@@ -129,9 +129,6 @@ bindsym $mod+Shift+Return exec xterm -e ranger
 # lock screen
 bindsym $mod+Shift+x exec i3lock -c 000000
 
-# display configuration
-bindsym $mod+Shift+m exec ~/bin/fix_monitors.sh
-
 # shutdown shortcut
 bindsym $mod+Shift+h exec "i3-nagbar -t warning -m 'Shutdown?' -b 'Yes' 'systemctl poweroff -i'"
 
@@ -153,10 +150,10 @@ bar {
 }
 
 # keyboard setup
-exec setxkbmap -layout "en_US,hu" -option grp:shift_caps_toggle
+exec_always setxkbmap -layout "en_US,hu" -option grp:shift_caps_toggle
 
 # display configuration
-exec ~/bin/fix_monitors.sh
+exec_always ~/bin/fix_monitors.sh
 
 # generate background
-exec python3 ~/src/daily-exp-sum/daily_exp_sum.py | feh --bg-center -
+exec_always python3 ~/src/daily-exp-sum/daily_exp_sum.py | feh --bg-center -
