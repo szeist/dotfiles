@@ -19,12 +19,12 @@ fi
 # set PATH so it includes user's private bin directories
 PATH="$HOME/bin:$HOME/.local/bin:$PATH"
 PATH="$HOME/.cabal/bin:$PATH"
-PATH="$HOME/opt/anaconda3/bin:$PATH"
 PATH="$HOME/opt/android-studio/bin:$PATH"
-NVM_DIR="$HOME/.nvm"
-GOPATH=$HOME/.go
-PATH=$PATH:$HOME/bin:$HOME/.cabal/bin:$HOME/.local/bin:$HOME/.rvm/bin:$PATH:$GOPATH/bin
-WORKON_HOME=$HOME/.virtualenvs
+export NVM_DIR="$HOME/.nvm"
+export GOPATH=$HOME/.go
+export PATH=$PATH:$HOME/bin:$HOME/.cabal/bin:$HOME/.local/bin:$HOME/.rvm/bin:$PATH:$GOPATH/bin
+export WORKON_HOME=$HOME/.virtualenvs
+export TERMINAL=xterm
 
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
