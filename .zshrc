@@ -1,16 +1,6 @@
 export ZSH=$HOME/.oh-my-zsh
 export EDITOR=/usr/bin/nvim
 
-export WORKON_HOME=~/.virtuanenvs
-export GOPATH=~/.go
-export PATH=$PATH:~/.go/bin:~/.gem/ruby/2.3.0/bin
-
-# Predict magic
-export PREDICT_SRC="$HOME/src/emarsys/predict"
-#export PYTHONPATH="$PREDICT_SRC"
-export DROPBOX="$PREDICT_SRC/test-dropbox"
-export DROPBOX_PROPERTIES="$DROPBOX/dropbox.properties"
-
 ZSH_THEME="ys"
 HIST_STAMPS="yyyy-mm-dd"
 
