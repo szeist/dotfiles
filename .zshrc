@@ -1,3 +1,4 @@
+source $HOME/.profile
 export ZSH=$HOME/.oh-my-zsh
 export EDITOR=/usr/bin/nvim
 
