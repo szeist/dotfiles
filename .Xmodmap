@@ -1,5 +1,0 @@
-! HP EliteBook 2540p key bindings
-
-keycode 121 = XF86AudioMute
-keycode 122 = XF86AudioLowerVolume
-keycode 123 = XF86AudioRaiseVolume
