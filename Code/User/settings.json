@@ -1,0 +1,32 @@
+{
+    "window.zoomLevel": 1,
+    "workbench.startupEditor": "newUntitledFile",
+    "python.pythonPath": "python",
+    "explorer.openEditors.visible": 0,
+    "window.restoreWindows": "none",
+    "extensions.ignoreRecommendations": false,
+    "python.venvPath": "~/.virtualenvs",
+    "eslint.alwaysShowStatus": true,
+    "editor.tabSize": 2,
+    "gitlens.advanced.messages": {
+        "suppressCommitHasNoPreviousCommitWarning": false,
+        "suppressCommitNotFoundWarning": false,
+        "suppressFileNotUnderSourceControlWarning": false,
+        "suppressGitVersionWarning": false,
+        "suppressLineUncommittedWarning": false,
+        "suppressNoRepositoryWarning": false,
+        "suppressResultsExplorerNotice": false,
+        "suppressUpdateNotice": false,
+        "suppressWelcomeNotice": true
+    },
+    "files.associations": {
+        "*.inc": "php"
+    },
+    "diffEditor.ignoreTrimWhitespace": false,
+    "[python]": {
+        "editor.insertSpaces": true,
+        "editor.tabSize": 4,
+        "editor.autoIndent": false
+    },
+    "gitlens.keymap": "alternate"
+}
