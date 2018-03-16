@@ -1,6 +1,7 @@
 [MESSAGES CONTROL]
 #R0903 Too few public methods
-disable=R0903
+#C0111 Missing function docstring
+disable=R0903,C0111
 
 [TYPECHECK]
 ignored-modules=flask_sqlalchemy
