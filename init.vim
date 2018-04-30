@@ -40,7 +40,7 @@ Plugin 'mhinz/vim-signify'
 " Syntax checker
 Plugin 'benekastah/neomake'
 " CTags updater
-Plugin 'xolox/vim-misc'
+"Plugin 'xolox/vim-misc'
 " Tmux integration
 " Plugin 'epeli/slimux'
 " Editorconfig support
