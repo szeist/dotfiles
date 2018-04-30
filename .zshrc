@@ -18,3 +18,5 @@ alias code="(ssh-add -l > /dev/null || ssh-add) && code"
 
 alias php5='docker run -it --rm -v "$PWD":/app/ -w /app php:5'
 alias php7='docker run -it --rm -v "$PWD":/app/ -w /app php:7'
+
+[ -f $HOME/.zshrc.local ] && source $HOME/.zshrc.local
