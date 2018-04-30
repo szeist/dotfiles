@@ -1,7 +1,6 @@
 {
     "window.zoomLevel": 1,
     "workbench.startupEditor": "newUntitledFile",
-    "python.pythonPath": "python",
     "explorer.openEditors.visible": 0,
     "window.restoreWindows": "none",
     "extensions.ignoreRecommendations": false,
@@ -15,7 +14,8 @@
         "suppressGitVersionWarning": false,
         "suppressLineUncommittedWarning": false,
         "suppressNoRepositoryWarning": false,
-        "suppressResultsExplorerNotice": false,
+        "suppressResultsExplorerNotice": true,
+        "suppressShowKeyBindingsNotice": true,
         "suppressUpdateNotice": false,
         "suppressWelcomeNotice": true
     },
@@ -28,5 +28,5 @@
         "editor.tabSize": 4,
         "editor.autoIndent": false
     },
-    "gitlens.keymap": "alternate"
+    "gitlens.keymap": "chorded"
 }
