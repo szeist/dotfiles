@@ -151,6 +151,8 @@ bar {
         status_command ~/.local/bin/py3status -c ~/.config/i3/py3status.conf
 }
 
+exec redshift &
+
 # keyboard setup
 exec_always setxkbmap -layout "en_US,hu" -option grp:shift_caps_toggle
 
