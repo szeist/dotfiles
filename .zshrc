@@ -19,4 +19,7 @@ alias code="(ssh-add -l > /dev/null || ssh-add) && code"
 alias php5='docker run -it --rm -v "$PWD":/app/ -w /app php:5'
 alias php7='docker run -it --rm -v "$PWD":/app/ -w /app php:7'
 
+alias say='spd-say -t female2 -l EN -r 5 -p -20'
+alias wiki="nvim -c :VimwikiIndex"
+
 [ -f $HOME/.zshrc.local ] && source $HOME/.zshrc.local
