@@ -29,6 +29,9 @@
 *xterm*faceSize5: 24
 *xterm*faceSize6: 36
 
+! Normal cursor size
+Xcursor.size: 12
+
 ! Copy to clipboard
 *xterm*selectToClipboard: true
 
