@@ -39,46 +39,15 @@ Plugin 'vim-airline/vim-airline-themes'
 Plugin 'mhinz/vim-signify'
 " Syntax checker
 Plugin 'benekastah/neomake'
-" CTags updater
-"Plugin 'xolox/vim-misc'
-" Tmux integration
-" Plugin 'epeli/slimux'
 " Editorconfig support
 Plugin 'editorconfig/editorconfig-vim'
 " Support local vimrc
-" Plugin 'LucHermitte/lh-vim-lib'
-" Plugin 'LucHermitte/local_vimrc'
+Plugin 'LucHermitte/lh-vim-lib'
+Plugin 'LucHermitte/local_vimrc'
 " Commenter
 Plugin 'scrooloose/nerdcommenter'
-" Test runner
-" Plugin 'janko-m/vim-test'
-
-" Scala plugin
-" Plugin 'derekwyatt/vim-scala'
-" C++ code completion
-" Plugin 'vim-scripts/OmniCppComplete'
-" Octave plugin
-" Plugin 'jvirtanen/vim-octave'
-" Typescript plugin
-" Plugin 'leafgarland/typescript-vim'
-" Powershell syntax
-" Plugin 'PProvost/vim-ps1'
-
-" R plugins
-" Plugin 'jalvesaq/Nvim-R'
-" Plugin 'lyuts/vim-rtags'
-
-" Haskell plugins
-"Plugin 'eagletmt/ghcmod-vim'
-"Plugin 'eagletmt/neco-ghc'
-"Plugin 'neovimhaskell/haskell-vim'
-
-" Plugin 'Shougo/vimproc.vim'
-" Plugin 'Shougo/unite.vim'
-" Plugin 'm2mdas/phpcomplete-extended'
-
-" PHP refactor tool
-" Plugin 'adoy/vim-php-refactoring-toolbox'
+" Notes plugin
+Plugin 'vimwiki/vimwiki'
 
 " Dockerfile syntax
 Plugin 'ekalinin/Dockerfile.vim'
@@ -94,10 +63,6 @@ Plugin 'evidens/vim-twig'
 Plugin 'digitaltoad/vim-pug'
 " NodeJS tools
 Plugin 'moll/vim-node'
-
-" Markdown preview
-" apt-get install markdown
-" Plugin 'vim-markdown-preview'
 
 call vundle#end()
 
@@ -245,12 +210,6 @@ let g:airline_exclude_preview=1
 let g:signify_vcs_list=['git', 'hg', 'svn']
 let g:signify_update_on_bufenter = 1
 
-" let g:syntastic_check_on_open=1
-" let g:syntastic_enable_signs=1
-" let g:syntastic_javascript_checkers = ['eslint']
-" Detect local eslint
-" let g:syntastic_javascript_eslint_exec = Trim(system('npm-which eslint'))
-
 " CtrlSpace configuration
 let g:CtrlSpaceLoadLastWorkspaceOnStart = 1
 let g:CtrlSpaceSaveWorkspaceOnSwitch = 1
@@ -261,11 +220,11 @@ if has('nvim')
   nmap <c-space> <nul> 
 end
 
-
 let g:ag_prg='ag -S --nocolor --nogroup --column --ignore node_modules --ignore dist --ignore tags'
 
-let vim_markdown_preview_toggle=1
-let vim_markdown_preview_hotkey='<C-m>'
+" Vimwiki settings
+
+let g:vimwiki_path = '~/szeist@gmail.com/vimwiki/'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Key bindings
@@ -275,13 +234,3 @@ map <Leader>n :NERDTreeToggle<CR>
 
 let g:multi_cursor_next_key="\<C-d>"
 
-" Slimux key bindings
-map <Leader>a :SlimuxShellLast<CR>
-map <Leader>s :SlimuxREPLSendSelection<CR>
-map <Leader>l :SlimuxREPLSendLine<CR>
-map <Leader>k :SlimuxSendKeysLast<CR>
-
-map <silent> tw :GhcModTypeInsert<CR>
-map <silent> ts :GhcModSplitFunCase<CR>
-map <silent> tq :GhcModType<CR>
-map <silent> te :GhcModTypeClear<CR>
