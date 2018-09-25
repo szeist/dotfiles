@@ -1,0 +1,10 @@
+default_programmer = "arduino";
+default_serial     = "/dev/ttyUSB0";
+
+programmer
+  id    = "arduino";
+  desc  = "Arduino";
+  type  = "arduino";
+  connection_type = serial;
+  baudrate = 57600;
+;
