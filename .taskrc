@@ -31,3 +31,5 @@ data.location=~/szeist@gmail.com/Tasks
 #include /usr/share/doc/task/rc/solarized-light-256.theme
 #include /usr/share/doc/task/rc/no-color.theme
 
+uda.tasksyncDate.type=date
+uda.tasksyncDate.label=TaskSync Date
