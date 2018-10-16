@@ -4,3 +4,8 @@ i3
 i3lock
 i3status
 redshift
+python3-setuptools
+python3-pyqt5
+python3-pip
+libsecp256k1-0
+python3-pyqt5
