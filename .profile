@@ -16,6 +16,7 @@ if [[ ":$PATH:" != *":$HOME/src/scripts:"* ]]; then
   PATH="$HOME/.rvm/bin:$PATH"
   PATH="$HOME/.luarocks/bin:$PATH"
   PATH="$GOPATH/bin:$PATH"
+  PATH="$HOME/opt/Android/Sdk/platform-tools:$PATH"
   export PATH
 fi
 
