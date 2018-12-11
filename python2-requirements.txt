@@ -1,0 +1,5 @@
+py3status
+pylint
+termdown
+backports.shutil_get_terminal_size
+neovim

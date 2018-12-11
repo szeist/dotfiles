@@ -1,5 +1,2 @@
-py3status
-pylint
-termdown
-backports.shutil_get_terminal_size
 https://download.electrum.org/3.2.3/Electrum-3.2.3.tar.gz#egg=electrum[fast]
+neovim
