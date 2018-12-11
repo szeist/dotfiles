@@ -14,15 +14,17 @@ source $ZSH/oh-my-zsh.sh
 
 alias xclip='xclip -selection c'
 
-alias ssh="(ssh-add -l > /dev/null || ssh-add) && ssh"
-alias scp="(ssh-add -l > /dev/null || ssh-add) && scp"
-alias git="(ssh-add -l > /dev/null || ssh-add) && git"
-alias code="(ssh-add -l > /dev/null || ssh-add) && code"
+alias ssh='(ssh-add -l > /dev/null || ssh-add) && ssh'
+alias scp='(ssh-add -l > /dev/null || ssh-add) && scp'
+alias git='(ssh-add -l > /dev/null || ssh-add) && git'
+alias code='(ssh-add -l > /dev/null || ssh-add) && code'
 
-alias php5='docker run -it --rm -v "$PWD":/app/ -w /app php:5'
-alias php7='docker run -it --rm -v "$PWD":/app/ -w /app php:7'
+alias php5="docker run -it --rm --tty -v $PWD:/app -w /app php:5-cli php"
+alias php7="docker run -it --rm --tty -v $PWD:/app -w /app php:7-cli php"
+alias php='php7'
 
 alias say='spd-say -t female2 -l EN -r 5 -p -20'
-alias wiki="nvim -c :VimwikiIndex"
-alias tasksync="cd $SRCDIR/tasksync && pipenv run python todosync.py && cd - && task list project:home"
-alias retro.sh="termdown 324 && say \"Security, wooooohooooooooo!\""
+alias wiki='nvim -c :VimwikiIndex'
+alias tasksync='cd $SRCDIR/tasksync && pipenv run python todosync.py && cd - && task list project:home'
+alias retro.sh='termdown 324 && say \"Security, wooooohooooooooo!\"'
+alias composer="docker run --rm -i --tty -v $PWD:/app -v $SSH_AUTH_SOCK:/ssh-auth.sock -v /etc/passwd:/etc/passwd:ro -v /etc/group:/etc/group:ro --user $(id -u):$(id -g) -e SSH_AUTH_SOCK=/ssh-auth.sock composer:latest"

@@ -172,6 +172,8 @@ bar {
 
 exec redshift &
 
+exec onedrive --synchronize --monitor &
+
 # keyboard setup
 exec_always setxkbmap -layout "en_US,hu" -option grp:shift_caps_toggle
 
