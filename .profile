@@ -13,6 +13,8 @@ export TERMINAL=xterm
 
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
 
+export GEM_HOME=$HOME/.gem
+
 [ -f /home/iszenasi/.travis/travis.sh ] && source /home/iszenasi/.travis/travis.sh
 
 if [[ ":$PATH:" != *":$HOME/src/scripts:"* ]]; then
