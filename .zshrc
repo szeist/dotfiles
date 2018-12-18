@@ -26,5 +26,5 @@ alias php='php7'
 alias say='spd-say -t female2 -l EN -r 5 -p -20'
 alias wiki='nvim -c :VimwikiIndex'
 alias tasksync='cd $SRCDIR/tasksync && pipenv run python todosync.py && cd - && task list project:home'
-alias retro.sh='termdown 324 && say \"Security, wooooohooooooooo!\"'
+alias retro.sh='termdown 324 && say "Security, wooooohooooooooo!"'
 alias composer="docker run --rm -i --tty -v $PWD:/app -v $SSH_AUTH_SOCK:/ssh-auth.sock -v /etc/passwd:/etc/passwd:ro -v /etc/group:/etc/group:ro --user $(id -u):$(id -g) -e SSH_AUTH_SOCK=/ssh-auth.sock composer:latest"
