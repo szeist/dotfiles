@@ -24,7 +24,13 @@ alias php7="docker run -it --rm --tty -v $PWD:/app -w /app php:7-cli php"
 alias php='php7'
 
 alias say='spd-say -t female2 -l EN -r 5 -p -20'
+
 alias wiki='nvim -c :VimwikiIndex'
+
 alias tasksync='cd $SRCDIR/tasksync && pipenv run python todosync.py && cd - && task list project:home'
-alias retro.sh='termdown 324 && say "Security, wooooohooooooooo!"'
+
 alias composer="docker run --rm -i --tty -v $PWD:/app -v $SSH_AUTH_SOCK:/ssh-auth.sock -v /etc/passwd:/etc/passwd:ro -v /etc/group:/etc/group:ro --user $(id -u):$(id -g) -e SSH_AUTH_SOCK=/ssh-auth.sock composer:latest"
+
+alias kali-on='VBoxManage startvm "Kali Linux" --type headless'
+alias kali-off='VBoxManage controlvm "Kali Linux" poweroff'
+alias kali-ssh='ssh root@$(VBoxManage guestproperty get "Kali Linux" /VirtualBox/GuestInfo/Net/0/V4/IP | cut -d" " -f2)'
