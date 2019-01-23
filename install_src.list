@@ -1,1 +1,4 @@
 https://github.com/abraunegg/onedrive.git
+
+https://github.com/gpg/libgpg-error # >= 1.34.0
+https://github.com/gpg/gpgme # >= 1.12.0 , export LD_RUN_PATH=/usr/local/lib
