@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=VimWiki
+GenericName=VimWiki
+Comment=Local Wiki in VimWiki
+Exec=nvim -c :VimwikiIndex
+Terminal=true
