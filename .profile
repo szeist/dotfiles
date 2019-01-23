@@ -4,16 +4,16 @@ if [ -n "$BASH_VERSION" ]; then
     fi
 fi
 
+export SSH_AUTH_SOCK="/run/user/$(id -u)/gnupg/S.gpg-agent.ssh"
+
+[ -f /usr/share/rvm/scripts/rvm ] && source /usr/share/rvm/scripts/rvm
+
 export NVM_DIR="$HOME/.nvm"
 export GOPATH=$HOME/.go
 export WORKON_HOME=$HOME/.virtualenvs
 export TERMINAL=xterm
 
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
-
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
-
-export GEM_HOME=$HOME/.gem
 
 [ -f /home/iszenasi/.travis/travis.sh ] && source /home/iszenasi/.travis/travis.sh
 
