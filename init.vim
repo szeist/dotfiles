@@ -224,7 +224,7 @@ let g:ag_prg='ag -S --nocolor --nogroup --column --ignore node_modules --ignore 
 
 " Vimwiki settings
 
-let g:vimwiki_path = '~/szeist@gmail.com/vimwiki/'
+let g:vimwiki_path = '~/Documents/vimwiki/'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Key bindings
