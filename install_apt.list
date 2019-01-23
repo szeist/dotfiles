@@ -12,3 +12,6 @@ python3-pyqt5
 exuberant-ctags
 silversearcher-ag
 neovim
+yubioath-desktop yubikey-manager yubikey-manager-qt
+pcscd scdaemon gnupg2 pcsc-tools
+rvm
