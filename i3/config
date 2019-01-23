@@ -9,10 +9,9 @@ set $ws5 5
 # Default workspaces for apps
 
 assign [class="Code"] $ws1
-assign [class="brave"] $ws2
+assign [class="Brave-browser"] $ws2
 assign [class="Google-chrome"] $ws2
 assign [class="Firefox"] $ws2
-assign [class="Opera"] $ws2
 assign [class="Slack"] $ws5
 assign [class="Keybase"] $ws5
 
@@ -182,3 +181,8 @@ exec_always fix_monitors.sh
 
 # generate background
 exec_always ~/src/scripts/daily_exp_sum.py | feh --bg-center -
+
+# default apps
+exec --no-startup-id brave-browser
+exec --no-startup-id xterm
+exec --no-startup-id /usr/bin/keybase
