@@ -30,9 +30,10 @@
     },
     "gitlens.keymap": "chorded",
     "gitlens.historyExplorer.enabled": true,
-    "arduino.path": "/home/iszenasi/Downloads/arduino-1.8.5/",
+    "arduino.path": "/home/iszenasi/opt/arduino-1.8.8/",
     "C_Cpp.intelliSenseEngine": "Tag Parser",
     "vim.disableExtension": false,
     "gitlens.views.fileHistory.enabled": true,
-    "gitlens.views.lineHistory.enabled": true
+    "gitlens.views.lineHistory.enabled": true,
+    "arduino.defaultBaudRate": 57600
 }
