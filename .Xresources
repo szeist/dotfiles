@@ -20,7 +20,7 @@
 *xterm*color15: #d0d0d0
 
 ! Setup font
-*xterm*faceName: 'Dejavu Sans Mono'
+*xterm*faceName: DejaVuSansMono Nerd Font Mono
 *xterm*faceSize: 12
 *xterm*faceSize1: 10
 *xterm*faceSize2: 12
