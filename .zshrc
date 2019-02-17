@@ -30,4 +30,5 @@ alias xclip='xclip -selection c'
 
 alias kali-on='VBoxManage startvm "Kali Linux" --type headless'
 alias kali-off='VBoxManage controlvm "Kali Linux" poweroff'
-alias kali-ssh='ssh root@$(VBoxManage guestproperty get "Kali Linux" /VirtualBox/GuestInfo/Net/0/V4/IP | cut -d" " -f2)'
+alias kali-ssh='ssh root@$(VBoxManage guestproperty get "Kali Linux" /VirtualBox/GuestInfo/Net/1/V4/IP | cut -d" " -f2)'
+alias kali-burp-proxy='http_proxy=http://$(VBoxManage guestproperty get "Kali Linux" /VirtualBox/GuestInfo/Net/1/V4/IP | cut -d" " -f2):8080 https_proxy=$http_proxy noproxy=""'
