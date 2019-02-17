@@ -1,2 +1,2 @@
-https://download.electrum.org/3.2.3/Electrum-3.2.3.tar.gz#egg=electrum[fast]
+https://download.electrum.org/3.3.4/Electrum-3.3.4.tar.gz#egg=electrum[fast]
 neovim
