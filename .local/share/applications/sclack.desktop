@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Sclack
+GenericName=Sclack
+Comment=Command line sclack client
+Exec=sclack
+Terminal=true
