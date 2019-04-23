@@ -12,6 +12,10 @@ source $ZSH/oh-my-zsh.sh
 
 [ -f $HOME/.zshrc.local ] && source $HOME/.zshrc.local
 
+function jwt-decode() {
+  sed -e 's/\./\n/g' <<< $(cut -d. -f1,2 <<< $1) | base64 -d | jq .
+}
+
 alias gpg='gpg2'
 
 alias php5='docker run -it --rm --tty -v ${PWD}:/app -w /app php:5-cli php'
