@@ -35,5 +35,9 @@
     "vim.disableExtension": false,
     "gitlens.views.fileHistory.enabled": true,
     "gitlens.views.lineHistory.enabled": true,
-    "arduino.defaultBaudRate": 57600
+    "arduino.defaultBaudRate": 57600,
+    "python.jediEnabled": false,
+    "editor.suggestSelection": "first",
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    "java.configuration.checkProjectSettingsExclusions": false
 }
