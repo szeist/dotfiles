@@ -16,6 +16,10 @@ function jwt-decode() {
   sed -e 's/\./\n/g' <<< $(cut -d. -f1,2 <<< $1) | base64 -d | jq .
 }
 
+function ip2dec() {
+  echo -n $1 | tr . "\n" | awk '{x = x * 256 + $1} END {print x}'
+}
+
 alias gpg='gpg2'
 
 alias php5='docker run -it --rm --tty -v ${PWD}:/app -w /app php:5-cli php'
@@ -32,7 +36,14 @@ alias composer='docker run --rm -i --tty -v ${PWD}:/app -v ${SSH_AUTH_SOCK}:/ssh
 
 alias xclip='xclip -selection c'
 
-alias kali-on='VBoxManage startvm "Kali Linux" --type headless'
-alias kali-off='VBoxManage controlvm "Kali Linux" poweroff'
-alias kali-ssh='ssh root@$(VBoxManage guestproperty get "Kali Linux" /VirtualBox/GuestInfo/Net/1/V4/IP | cut -d" " -f2)'
-alias kali-burp-proxy='http_proxy=http://$(VBoxManage guestproperty get "Kali Linux" /VirtualBox/GuestInfo/Net/1/V4/IP | cut -d" " -f2):8080 https_proxy=$http_proxy noproxy=""'
+alias kali='xhost local:root; docker run --rm -it --privileged -v $PWD:/app -v /tmp/.X11-unix:/tmp/.X11-unix -v $HOME/.Xauthority:/root/.Xauthority -e DISPLAY -w /app -v /dev/bus/usb:/dev/bus/usb -v /sys/fs/cgroup:/sys/fs/cgroup:ro --net host kali'
+alias kali-proxy='http_proxy=127.0.0.1:8080 https_proxy=$http_proxy noproxy=""'
+
+alias audio-hdmi='pactl set-card-profile 0 output:hdmi-stereo-extra1'
+alias audio-internal='pactl set-card-profile 0 output:analog-stereo'
+
+###-tns-completion-start-###
+if [ -f /home/iszenasi/.tnsrc ]; then 
+    source /home/iszenasi/.tnsrc 
+fi
+###-tns-completion-end-###
