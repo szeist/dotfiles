@@ -20,6 +20,11 @@ function ip2dec() {
   echo -n $1 | tr . "\n" | awk '{x = x * 256 + $1} END {print x}'
 }
 
+function bwunlock() {
+  bw unlock --check || export BW_SESSION=$(bw unlock --raw)
+  nohup bash -c 'sleep 120 && bw lock' > /dev/null 2>&1 &
+}
+
 alias gpg='gpg2'
 
 alias php5='docker run -it --rm --tty -v ${PWD}:/app -w /app php:5-cli php'
