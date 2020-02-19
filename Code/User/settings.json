@@ -1,5 +1,5 @@
 {
-    "window.zoomLevel": 1,
+    "window.zoomLevel": 2,
     "workbench.startupEditor": "newUntitledFile",
     "explorer.openEditors.visible": 0,
     "window.restoreWindows": "none",
@@ -39,5 +39,23 @@
     "python.jediEnabled": false,
     "editor.suggestSelection": "first",
     "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
-    "java.configuration.checkProjectSettingsExclusions": false
+    "java.configuration.checkProjectSettingsExclusions": false,
+    "nativescript.analytics.enabled": true,
+    "typescript.updateImportsOnFileMove.enabled": "always",
+    "vs-kubernetes": {
+        "vs-kubernetes.minikube-path": "/home/iszenasi/.vs-kubernetes/tools/minikube/linux-amd64/minikube"
+    },
+    "terraform.indexing": {
+        "enabled": true,
+        "liveIndexing": false,
+        "delay": 500,
+        "exclude": [
+            ".terraform/**/*",
+            "**/.terraform/**/*"
+        ]
+    },
+    "terraform.languageServer": {
+        "enabled": false,
+        "args": []
+    }
 }

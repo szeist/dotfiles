@@ -1,3 +1,4 @@
+"let g:ackprg='ag -S --nocolor --nogroup --column --ignore node_modules --ignore dist --ignore tags'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Vundle plugin manager
 " https://github.com/gmarik/Vundle.vim
@@ -20,14 +21,12 @@ Plugin 'altercation/vim-colors-solarized'
 Plugin 'scrooloose/nerdtree'
 " VCS support
 Plugin 'vcscommand.vim'
-" Multiple cursors
-Plugin 'terryma/vim-multiple-cursors'
 " Auto completion popup
 Plugin 'Shougo/deoplete.nvim'
 " Fuzzy file finder
 Plugin 'kien/ctrlp.vim'
-" Ag searcher (needs silversearcher-ag)
-Plugin 'rking/ag.vim'
+" Ack searcher
+Plugin 'mileszs/ack.vim'
 " Indet detectuin plugin
 Plugin 'ciaranm/detectindent'
 " Workspace plugin
@@ -41,28 +40,10 @@ Plugin 'mhinz/vim-signify'
 Plugin 'benekastah/neomake'
 " Editorconfig support
 Plugin 'editorconfig/editorconfig-vim'
-" Support local vimrc
-Plugin 'LucHermitte/lh-vim-lib'
-Plugin 'LucHermitte/local_vimrc'
 " Commenter
 Plugin 'scrooloose/nerdcommenter'
 " Notes plugin
 Plugin 'vimwiki/vimwiki'
-
-" Dockerfile syntax
-Plugin 'ekalinin/Dockerfile.vim'
-" Javascript syntax
-Plugin 'pangloss/vim-javascript'
-" Coffescript syntax
-Plugin 'kchmck/vim-coffee-script'
-" SCSS syntax
-Plugin 'cakebaker/scss-syntax.vim'
-" Twig syntax
-Plugin 'evidens/vim-twig'
-" Jade syntax
-Plugin 'digitaltoad/vim-pug'
-" NodeJS tools
-Plugin 'moll/vim-node'
 
 call vundle#end()
 
@@ -114,12 +95,12 @@ set incsearch
 " Show matching brackets
 set showmatch
 
-set wildignore+=.git,.hg,.svn
+set wildignore+=.git,.svn
 set wildignore+=*/tags
 set wildignore+=*/dist
-set wildignore+=*/tmp,*/temp,*/.tmp,*/cache,*/.rsync_cache,*/.sass-cache,.cabal-sandbox
+set wildignore+=*/tmp,*/temp,*/.tmp,*/cache,*/.rsync_cache,.cabal-sandbox
 set wildignore+=*.o,*.so,*.swp,*.zip,*.pyc
-set wildignore+=*/node_modules,*/bower_components,*/vendor,*/__pycache__
+set wildignore+=*/node_modules,*/vendor,*/__pycache__
 
 " Don't redraw while running macros
 set lazyredraw
@@ -140,15 +121,12 @@ autocmd BufReadPost *
 
 autocmd FileType php,perl,python setlocal shiftwidth=4 tabstop=4 expandtab
 
-autocmd BufRead,BufNewFile .xmobarrc setfiletype haskell
-
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 autocmd FileType cpp,hpp set omnifunc=omni#cpp#complete#Main
-autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
 autocmd FileType php setlocal omnifunc=phpcomplete_extended#CompletePHP
 
 autocmd! BufRead,BufWritePost * Neomake
@@ -199,7 +177,6 @@ endfunction
 
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#omni#input_patterns = {}
-" let g:deoplete#omni#input_patterns.php = '\w{3,}|[^. \t]->\w*|\w{3,}::\w*'
 let g:deoplete#max_list = 20
 
 let g:ctrlp_show_hidden=1
@@ -207,7 +184,7 @@ let g:ctrlp_show_hidden=1
 let g:airline_theme='solarized'
 let g:airline_exclude_preview=1
 
-let g:signify_vcs_list=['git', 'hg', 'svn']
+let g:signify_vcs_list=['git', 'svn']
 let g:signify_update_on_bufenter = 1
 
 " CtrlSpace configuration
@@ -220,17 +197,16 @@ if has('nvim')
   nmap <c-space> <nul> 
 end
 
-let g:ag_prg='ag -S --nocolor --nogroup --column --ignore node_modules --ignore dist --ignore tags'
+let g:ackprg='ag --vimgrep -S --nocolor --nogroup --column --ignore node_modules --ignore dist --ignore tags --ignore vendor --ignore .git'
 
 " Vimwiki settings
-
 let g:vimwiki_path = '~/Documents/vimwiki/'
+let g:vimwiki_syntax = 'markdown'
+let g:vimwiki_ext = '.md'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Key bindings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 map <Leader>n :NERDTreeToggle<CR>
-
-let g:multi_cursor_next_key="\<C-d>"
 
