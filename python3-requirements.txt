@@ -1,2 +1,3 @@
-https://download.electrum.org/3.3.4/Electrum-3.3.4.tar.gz#egg=electrum[fast]
+https://download.electrum.org/3.3.8/Electrum-3.3.8.tar.gz#egg=electrum[fast]
 neovim
+pipsource
