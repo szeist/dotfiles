@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Brave Personal
+GenericName=Brave Personal
+Comment=Brawe Browser Personal Profile
+Exec=brave-browser --profile-directory=Personal
+Terminal=false
