@@ -16,3 +16,7 @@ yubioath-desktop yubikey-manager yubikey-manager-qt
 pcscd scdaemon gnupg2 pcsc-tools
 rvm
 w3m-img
+pandoc
+ranger
+xlsx2csv
+libreoffice
