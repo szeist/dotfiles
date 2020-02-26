@@ -79,8 +79,7 @@ case "$extension" in
         try 7z -p l "$path" && { dump | trim; exit 0; } || exit 1;;
     # PDF documents:
     pdf)
-        try pdftotext -l 10 -nopgbrk -q "$path" - && \
-            { dump | trim | fmt -s -w $width; exit 0; } || exit 1;;
+        pdftoppm -f 1 -singlefile -jpeg -scale-to-x 800 -scale-to-y -1 -- "${path}" "${cached%.*}" && exit 6 || exit 1;;
     # BitTorrent Files
     torrent)
         try transmission-show "$path" && { dump | trim; exit 5; } || exit 1;;
@@ -93,6 +92,13 @@ case "$extension" in
         try lynx   -dump "$path" && { dump | trim | fmt -s -w $width; exit 4; }
         try elinks -dump "$path" && { dump | trim | fmt -s -w $width; exit 4; }
         ;; # fall back to highlight/cat if the text browsers fail
+    docx)
+	    pandoc -t markdown "$path" && exit 5 || exit 1;;
+    xlsx)
+	    xlsx2csv "$path" && exit 5 || exit 1;;
+    #pptx)
+    #  #unoconv -d presentation -e PageRange=1-1 -f jpg "$path" "{" | pdftoppm -f 1 -singlefile -jpeg -scale-to-x 800 -scale-to-y -1 - "${cached%.*}"; exit 6 || exit 1;;
+    #  unoconv -d presentation -e PageRange=1-1 -f jpg -o "${cached%.*}" "$path" && exit 6 || exit 1;;
 esac
 
 case "$mimetype" in
