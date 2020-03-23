@@ -6,7 +6,7 @@ export SRCDIR=$HOME/Personal/src
 ZSH_THEME="ys"
 HIST_STAMPS="yyyy-mm-dd"
 
-plugins=(adb bundler cabal capistrano composer django docker docker-compose gem git grunt gulp heroku nmap node npm nvm pip python rake ruby rvm systemd task virtualenvwrapper)
+plugins=(docker docker-compose git heroku nmap node npm nvm pip python systemd task virtualenvwrapper)
 
 source $ZSH/oh-my-zsh.sh
 
