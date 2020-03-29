@@ -183,7 +183,7 @@ exec_always setxkbmap -layout "en_US,hu" -option grp:shift_caps_toggle
 exec_always fix_monitors.sh
 
 # generate background
-exec_always ~/src/scripts/daily_exp_sum.py | feh --bg-center -
+exec_always cd ~/src/scripts/ && pipenv run daily_exp_sum.py | feh --bg-center -
 
 # default apps
 exec --no-startup-id xterm
