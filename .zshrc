@@ -31,18 +31,13 @@ alias php5='docker run -it --rm --tty -v ${PWD}:/app -w /app php:5-cli php'
 alias php7='docker run -it --rm --tty -v ${PWD}:/app -w /app php:7-cli php'
 alias php='php7'
 
-alias say='spd-say -t female2 -l EN -r 5 -p -20'
-
 alias wiki='nvim -c :VimwikiIndex'
 
 alias tasksync='cd $SRCDIR/tasksync && pipenv run python todosync.py && cd - && task list project:home'
 
-alias composer='docker run --rm -i --tty -v ${PWD}:/app -v ${SSH_AUTH_SOCK}:/ssh-auth.sock -v /etc/passwd:/etc/passwd:ro -v /etc/group:/etc/group:ro --user $(id -u):$(id -g) -e SSH_AUTH_SOCK=/ssh-auth.sock composer:latest'
-
 alias xclip='xclip -selection c'
 
-alias kali='xhost local:root; docker run --rm -it --privileged -v $PWD:/app -v /tmp/.X11-unix:/tmp/.X11-unix -v $HOME/.Xauthority:/root/.Xauthority -e DISPLAY -w /app -v /dev/bus/usb:/dev/bus/usb -v /sys/fs/cgroup:/sys/fs/cgroup:ro --net host kali'
-alias kali-proxy='http_proxy=127.0.0.1:8080 https_proxy=$http_proxy noproxy=""'
+alias kali='xhost local:root; docker run --rm -it --privileged -v $PWD:/app -v /tmp/.X11-unix:/tmp/.X11-unix -v $HOME/.Xauthority:/root/.Xauthority -e DISPLAY -w /app -v /dev/bus/usb:/dev/bus/usb -v /sys/fs/cgroup:/sys/fs/cgroup:ro --pid host --net host kali'
 
 alias audio-hdmi='pactl set-card-profile 0 output:hdmi-stereo-extra1'
 alias audio-internal='pactl set-card-profile 0 output:analog-stereo'
