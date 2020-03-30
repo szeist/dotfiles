@@ -42,8 +42,8 @@ alias kali='xhost local:root; docker run --rm -it --privileged -v $PWD:/app -v /
 alias audio-hdmi='pactl set-card-profile 0 output:hdmi-stereo-extra1'
 alias audio-internal='pactl set-card-profile 0 output:analog-stereo'
 
-alias taw='task add project:work due:today tag=Pisti,blue'
-alias tah='task add project:home due:today tag=Pisti,blue'
+alias taw='task add project:work due:today tag=pisti,blue'
+alias tah='task add project:home due:today tag=pisti,blue'
 alias tlw='task minimal project:work'
 alias tlh='task minimal project:home'
 
