@@ -159,10 +159,15 @@ bindsym --release Print exec scrot -s
 # print screen
 bindsym $mod+Shift+y exec yubioath-desktop
 
+# move workspace between screens
 bindsym $mod+Control+Up exec i3-msg move workspace to output up
 bindsym $mod+Control+Down exec i3-msg move workspace to output down
 bindsym $mod+Control+Left exec i3-msg move workspace to output left
 bindsym $mod+Control+Right exec i3-msg move workspace to output right
+
+# scratchpad
+bindsym $mod+minus scratchpad show
+bindsym $mod+Shift+minus move scratchpad
 
 workspace_layout tabbed
 
@@ -185,6 +190,6 @@ exec_always fix_monitors.sh
 # generate background
 exec_always cd ~/src/scripts/ && pipenv run daily_exp_sum.py | feh --bg-center -
 
-# default apps
-exec --no-startup-id xterm
-exec --no-startup-id /usr/bin/keybase
+# start terminal on scratchpad
+exec --no-startup-id xterm -T xterm_scratchpad
+for_window [title="xterm_scratchpad"] move scratchpad
