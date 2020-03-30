@@ -4,3 +4,4 @@ termdown
 backports.shutil_get_terminal_size
 neovim
 awscli
+pipenv-shebang
