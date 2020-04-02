@@ -1,0 +1,9 @@
+hotKey:
+  p:
+    shortCut:    p
+    description: View pods
+    command:     pods
+  x:
+    shortCut:    x
+    description: View secrets
+    command:     secret
