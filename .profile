@@ -28,3 +28,4 @@ if [[ ":$PATH:" != *":$HOME/src/scripts:"* ]]; then
 fi
 
 export ANDROID_EMULATOR_USE_SYSTEM_LIBS=1
+. /home/iszenasi/.profabevjava
