@@ -14,6 +14,7 @@ assign [class="Google-chrome"] $ws2
 assign [class="Firefox"] $ws2
 assign [class="Slack"] $ws5
 assign [class="Keybase"] $ws5
+assign [class="zoom"] $ws5
 
 
 # Font for window titles. Will also be used by the bar unless a different font
