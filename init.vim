@@ -176,8 +176,8 @@ endfunction
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 let g:deoplete#enable_at_startup = 1
-let g:deoplete#omni#input_patterns = {}
-let g:deoplete#max_list = 20
+call deoplete#custom#var('input_patterns', {})
+call deoplete#custom#option('max_list', 20)
 
 let g:ctrlp_show_hidden=1
 
