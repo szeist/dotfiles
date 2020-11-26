@@ -157,7 +157,7 @@ bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle
 # print screen
 bindsym --release Print exec scrot -s 
 
-# print screen
+# yubico authenticator
 bindsym $mod+Shift+y exec yubioath-desktop
 
 # move workspace between screens
@@ -180,7 +180,7 @@ bar {
 
 exec redshift &
 
-exec insync &
+exec insync start &
 
 # keyboard setup
 exec_always setxkbmap -layout "en_US,hu" -option grp:shift_caps_toggle
