@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=HeidiSQL
+GenericName=HeidiSQL
+Comment=HeidiSQL
+Exec=wine ~/opt/heidisql/heidisql.exe
+Terminal=false
