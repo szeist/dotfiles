@@ -1,61 +1,86 @@
 {
-    "window.zoomLevel": 2,
-    "workbench.startupEditor": "newUntitledFile",
-    "explorer.openEditors.visible": 0,
-    "window.restoreWindows": "none",
-    "extensions.ignoreRecommendations": false,
-    "python.venvPath": "~/.virtualenvs",
-    "eslint.alwaysShowStatus": true,
-    "editor.tabSize": 2,
-    "gitlens.advanced.messages": {
-        "suppressCommitHasNoPreviousCommitWarning": false,
-        "suppressCommitNotFoundWarning": false,
-        "suppressFileNotUnderSourceControlWarning": false,
-        "suppressGitVersionWarning": false,
-        "suppressLineUncommittedWarning": false,
-        "suppressNoRepositoryWarning": false,
-        "suppressResultsExplorerNotice": true,
-        "suppressShowKeyBindingsNotice": true,
-        "suppressUpdateNotice": false,
-        "suppressWelcomeNotice": true
+  "window.zoomLevel": 2,
+  "workbench.startupEditor": "newUntitledFile",
+  "explorer.openEditors.visible": 0,
+  "window.restoreWindows": "none",
+  "extensions.ignoreRecommendations": false,
+  "python.venvPath": "~/.virtualenvs",
+  "eslint.alwaysShowStatus": true,
+  "editor.tabSize": 2,
+  "gitlens.advanced.messages": {
+    "suppressCommitHasNoPreviousCommitWarning": false,
+    "suppressCommitNotFoundWarning": false,
+    "suppressFileNotUnderSourceControlWarning": false,
+    "suppressGitVersionWarning": false,
+    "suppressLineUncommittedWarning": false,
+    "suppressNoRepositoryWarning": false,
+    "suppressResultsExplorerNotice": true,
+    "suppressShowKeyBindingsNotice": true,
+    "suppressUpdateNotice": false,
+    "suppressWelcomeNotice": true
+  },
+  "files.associations": {
+    "*.inc": "php"
+  },
+  "diffEditor.ignoreTrimWhitespace": false,
+  "[python]": {
+    "editor.insertSpaces": true,
+    "editor.tabSize": 4,
+    "editor.autoIndent": false
+  },
+  "gitlens.keymap": "chorded",
+  "gitlens.historyExplorer.enabled": true,
+  "arduino.path": "/home/iszenasi/opt/arduino-1.8.8/",
+  "C_Cpp.intelliSenseEngine": "Tag Parser",
+  "vim.disableExtension": false,
+  "gitlens.views.fileHistory.enabled": true,
+  "gitlens.views.lineHistory.enabled": true,
+  "arduino.defaultBaudRate": 57600,
+  "python.jediEnabled": false,
+  "editor.suggestSelection": "first",
+  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+  "java.configuration.checkProjectSettingsExclusions": false,
+  "nativescript.analytics.enabled": true,
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "vs-kubernetes": {
+    "vs-kubernetes.minikube-path": "/home/iszenasi/.vs-kubernetes/tools/minikube/linux-amd64/minikube"
+  },
+  "terraform.indexing": {
+    "enabled": true,
+    "liveIndexing": false,
+    "delay": 500,
+    "exclude": [
+      ".terraform/**/*",
+      "**/.terraform/**/*"
+    ]
+  },
+  "terraform.languageServer": {
+    "external": true,
+    "args": [
+      "serve"
+    ]
+  },
+  "python.languageServer": "Pylance",
+  "vetur.validation.template": false,
+  "eslint.validate": [
+    {
+      "language": "vue",
+      "autoFix": false
     },
-    "files.associations": {
-        "*.inc": "php"
+    {
+      "language": "html",
+      "autoFix": false
     },
-    "diffEditor.ignoreTrimWhitespace": false,
-    "[python]": {
-        "editor.insertSpaces": true,
-        "editor.tabSize": 4,
-        "editor.autoIndent": false
-    },
-    "gitlens.keymap": "chorded",
-    "gitlens.historyExplorer.enabled": true,
-    "arduino.path": "/home/iszenasi/opt/arduino-1.8.8/",
-    "C_Cpp.intelliSenseEngine": "Tag Parser",
-    "vim.disableExtension": false,
-    "gitlens.views.fileHistory.enabled": true,
-    "gitlens.views.lineHistory.enabled": true,
-    "arduino.defaultBaudRate": 57600,
-    "python.jediEnabled": false,
-    "editor.suggestSelection": "first",
-    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
-    "java.configuration.checkProjectSettingsExclusions": false,
-    "nativescript.analytics.enabled": true,
-    "typescript.updateImportsOnFileMove.enabled": "always",
-    "vs-kubernetes": {
-        "vs-kubernetes.minikube-path": "/home/iszenasi/.vs-kubernetes/tools/minikube/linux-amd64/minikube"
-    },
-    "terraform.indexing": {
-        "enabled": true,
-        "liveIndexing": false,
-        "delay": 500,
-        "exclude": [
-            ".terraform/**/*",
-            "**/.terraform/**/*"
-        ]
-    },
-    "terraform.languageServer": {
-        "enabled": false,
-        "args": []
+    {
+      "language": "javascript",
+      "autoFix": false
     }
+  ],
+  "eslint.autoFixOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "C_Cpp.updateChannel": "Insiders",
+  "java.semanticHighlighting.enabled": true,
+  "cmake.configureOnOpen": true
 }
