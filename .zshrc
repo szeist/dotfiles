@@ -6,7 +6,7 @@ export SRCDIR=$HOME/Personal/src
 ZSH_THEME="ys"
 HIST_STAMPS="yyyy-mm-dd"
 
-plugins=(docker docker-compose git heroku nmap node npm nvm pip python systemd task virtualenvwrapper)
+plugins=(docker docker-compose git nmap task)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -22,18 +22,12 @@ function ip2dec() {
 
 function bwunlock() {
   bw unlock --check || export BW_SESSION=$(bw unlock --raw)
-  nohup bash -c 'sleep 120 && bw lock' > /dev/null 2>&1 &
+  nohup bash -c 'sleep 300 && bw lock' > /dev/null 2>&1 &
 }
 
 alias gpg='gpg2'
 
-alias php5='docker run -it --rm --tty -v ${PWD}:/app -w /app php:5-cli php'
-alias php7='docker run -it --rm --tty -v ${PWD}:/app -w /app php:7-cli php'
-alias php='php7'
-
 alias wiki='nvim -c :VimwikiIndex'
-
-alias tasksync='cd $SRCDIR/tasksync && pipenv run python todosync.py && cd - && task list project:home'
 
 alias xclip='xclip -selection c'
 
@@ -52,3 +46,4 @@ if [ -f /home/iszenasi/.tnsrc ]; then
     source /home/iszenasi/.tnsrc 
 fi
 ###-tns-completion-end-###
+[[ /usr/bin/kubectl ]] && source <(kubectl completion zsh)
