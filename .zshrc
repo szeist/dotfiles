@@ -41,6 +41,8 @@ alias tah='task add project:home due:today tag=pisti,blue'
 alias tlw='task minimal project:work'
 alias tlh='task minimal project:home'
 
+alias recordscreen='ffmpeg -video_size 1920x1080 -framerate 12 -f x11grab -i :0.0'
+
 ###-tns-completion-start-###
 if [ -f /home/iszenasi/.tnsrc ]; then 
     source /home/iszenasi/.tnsrc 
