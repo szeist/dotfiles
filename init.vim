@@ -1,5 +1,4 @@
-"let g:ackprg='ag -S --nocolor --nogroup --column --ignore node_modules --ignore dist --ignore tags'
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Vundle plugin manager
 " https://github.com/gmarik/Vundle.vim
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
