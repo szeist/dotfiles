@@ -182,11 +182,12 @@ exec redshift &
 
 exec insync start &
 
-# keyboard setup
 exec_always setxkbmap -layout "en_US,hu" -option grp:shift_caps_toggle
 
-# display configuration
 exec_always fix_monitors.sh
+
+exec_always fix_keyboard.sh
+exec_always fix_trackball.sh
 
 # generate background
 exec_always cd ~/src/scripts/ && pipenv run daily_exp_sum.py | feh --bg-center -
