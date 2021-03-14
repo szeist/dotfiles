@@ -11,7 +11,6 @@ export SSH_AUTH_SOCK="/run/user/$(id -u)/gnupg/S.gpg-agent.ssh"
 export NVM_DIR="$HOME/.nvm"
 export GOPATH=$HOME/.go
 export WORKON_HOME=$HOME/.virtualenvs
-export ANDROID_HOME=$HOME/opt/Android/Sdk
 export TERMINAL=xterm
 
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
@@ -20,10 +19,7 @@ export TERMINAL=xterm
 
 if [[ ":$PATH:" != *":$HOME/src/scripts:"* ]]; then
   PATH="$HOME/.local/bin:$HOME/src/scripts:$PATH"
-  PATH="$HOME/opt/android-studio/bin:$PATH"
-  PATH="$HOME/.luarocks/bin:$PATH"
   PATH="$GOPATH/bin:$PATH"
-  PATH="$HOME/opt/Android/Sdk/platform-tools:$PATH"
   export PATH
 fi
 
