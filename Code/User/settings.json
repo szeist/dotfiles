@@ -82,5 +82,11 @@
   "C_Cpp.updateChannel": "Insiders",
   "java.semanticHighlighting.enabled": true,
   "cmake.configureOnOpen": true,
+  "workbench.editorAssociations": [
+    {
+      "viewType": "jupyter.notebook.ipynb",
+      "filenamePattern": "*.ipynb"
+    }
+  ],
   "window.zoomLevel": 1
 }
