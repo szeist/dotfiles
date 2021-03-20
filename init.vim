@@ -94,10 +94,10 @@ set incsearch
 " Show matching brackets
 set showmatch
 
-set wildignore+=.git,.svn
+set wildignore+=.git
 set wildignore+=*/tags
 set wildignore+=*/dist
-set wildignore+=*/tmp,*/temp,*/.tmp,*/cache,*/.rsync_cache,.cabal-sandbox
+set wildignore+=*/tmp,*/temp,*/.tmp,*/cache,*/.rsync_cache
 set wildignore+=*.o,*.so,*.swp,*.zip,*.pyc
 set wildignore+=*/node_modules,*/vendor,*/__pycache__
 
@@ -162,13 +162,47 @@ set background=dark
 colorscheme solarized
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Functions settings
+" Functions
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" Strip whitespaces (and \r \n characters)
-function! Trim(input_string)
-  return substitute(a:input_string, '\v^\s*(.{-})[\s\r\n]$','\1','')
+function! ColemakEnable()
+    " movements
+    nnoremap n k|xnoremap n k|onoremap n k|
+    nnoremap e j|xnoremap e j|onoremap e j|
+    nnoremap i l|xnoremap i l|onoremap i l|
+
+    " insert / append
+    nnoremap s i|
+    nnoremap S I|
+    nnoremap t a|
+    nnoremap T A|
+
+    " window navigation
+    nnoremap <C-w>n <C-w>k|xnoremap <C-w>n <C-w>k|
+    nnoremap <C-w>N <C-w>H|xnoremap <C-w>N <C-w>H|
+    nnoremap <C-w>e <C-w>j|xnoremap <C-w>e <C-w>j|
+    nnoremap <C-w>E <C-w>J|xnoremap <C-w>E <C-w>J|
+    nnoremap <C-w>i <C-w>l|xnoremap <C-w>i <C-w>l|
+    nnoremap <C-w>I <C-w>L|xnoremap <C-w>I <C-w>L|
 endfunction
+command! ColemakEnable call ColemakEnable()
+
+function! ColemakDisable()
+    nunmap n|xunmap n|ounmap n|
+    nunmap e|xunmap e|ounmap e|
+    nunmap i|xunmap i|ounmap i|
+    nunmap s|xunmap s|ounmap i|
+    nunmap S|xunmap S|ounmap i|
+    nunmap t|xunmap t|ounmap i|
+    nunmap T|xunmap T|ounmap i|
+    nunmap <C-w>n|xunmap <C-w>n|
+    nunmap <C-w>N|xunmap <C-w>N|
+    nunmap <C-w>e|xunmap <C-w>e|
+    nunmap <C-w>E|xunmap <C-w>E|
+    nunmap <C-w>i|xunmap <C-w>i|
+    nunmap <C-w>I|xunmap <C-w>I|
+endfunction
+command! ColemakDisable call ColemakDisable()
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugin settings
@@ -183,7 +217,7 @@ let g:ctrlp_show_hidden=1
 let g:airline_theme='solarized'
 let g:airline_exclude_preview=1
 
-let g:signify_vcs_list=['git', 'svn']
+let g:signify_vcs_list=['git']
 let g:signify_update_on_bufenter = 1
 
 " CtrlSpace configuration
@@ -193,7 +227,7 @@ let g:CtrlSpaceSaveWorkspaceOnExit = 1
 
 " Fix neovim capture
 if has('nvim')
-  nmap <c-space> <nul> 
+  nmap <c-space> <nul>
 end
 
 let g:ackprg='ag --vimgrep -S --nocolor --nogroup --column --ignore node_modules --ignore dist --ignore tags --ignore vendor --ignore .git'
