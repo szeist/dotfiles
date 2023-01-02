@@ -62,3 +62,4 @@ uda.intheamtrellolistname.label=Inthe.AM Trello List Name
 report.minimal.columns=id,project,description
 report.minimal.labels=ID,Project,Description
 report.minimal.sort=urgency-,due-
+news.version=2.6.0

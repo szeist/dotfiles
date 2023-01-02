@@ -4,21 +4,14 @@ i3
 i3lock
 i3status
 redshift
-python3-setuptools
-python3-pyqt5
-python3-pip
-libsecp256k1-0
-python3-pyqt5
-exuberant-ctags
 neovim
-yubioath-desktop yubikey-manager yubikey-manager-qt
-pcscd scdaemon gnupg2 pcsc-tools
-rvm
-w3m-img
+yubioath-desktop yubikey-manage
+gnupg2
+w3m-img #w3m imlib
 pandoc
 ranger
 xlsx2csv
 libreoffice
 sxiv
 ffmpeg
-silversearcher-ag
+dunst
