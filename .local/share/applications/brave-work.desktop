@@ -1,7 +1,0 @@
-[Desktop Entry]
-Type=Application
-Name=Brave Work
-GenericName=Brave Work
-Comment=Brawe Browser Work Profile
-Exec=brave-browser --profile-directory=Work
-Terminal=false

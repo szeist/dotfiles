@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Artisan
+GenericName=Artisan
+Path=/home/iszenasi/src/artisan
+Exec=make run
+Terminal=false

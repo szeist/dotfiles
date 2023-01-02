@@ -31,7 +31,7 @@ bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+p exec j4_dmenu
+bindsym $mod+p exec j4-dmenu-desktop
 
 # change focus
 bindsym $mod+j focus left
@@ -150,12 +150,15 @@ bindsym $mod+Shift+x exec i3lock -c 000000
 bindsym $mod+Shift+h exec "i3-nagbar -t warning -m 'Shutdown?' -b 'Yes' 'systemctl poweroff -i'"
 
 # volume control
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5%
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5%
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle
+bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -q sset Master 5%+
+bindsym XF86AudioLowerVolume exec --no-startup-id amixer -q sset Master 5%-
+bindsym XF86AudioMute exec --no-startup-id amixer -q sset Master toggle
+bindsym XF86AudioMicMute exec --no-startup-id amixer -q sset Mic toggle
+bindsym XF86MonBrightnessDown exec --no-startup-id pidof -q redshift || redshift &
+bindsym XF86MonBrightnessUp exec --no-startup-id pkill redshift && xbacklight -set 70
 
 # print screen
-bindsym --release Print exec scrot -s 
+bindsym --release Print exec scrot -s
 
 # yubico authenticator
 bindsym $mod+Shift+y exec yubioath-desktop
@@ -175,19 +178,15 @@ workspace_layout tabbed
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-        status_command ~/.local/bin/py3status -c ~/.config/i3/py3status.conf
+        status_command py3status -c ~/.i3/py3status.conf
 }
 
 exec redshift &
 
-exec insync start &
-
-exec_always setxkbmap -layout "en_US,hu" -option grp:shift_caps_toggle
-
-exec_always fix_monitors.sh
-
-exec_always fix_keyboard.sh
-exec_always fix_trackball.sh
+exec_always fix_fprint.sh &
+exec_always fix_monitors.sh &
+exec_always fix_keyboard.sh &
+exec_always fix_trackball.sh &
 
 # generate background
 exec_always cd ~/src/scripts/ && pipenv run daily_exp_sum.py | feh --bg-center -
