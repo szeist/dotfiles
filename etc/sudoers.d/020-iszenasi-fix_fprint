@@ -1,0 +1,1 @@
+iszenasi ALL=(ALL) NOPASSWD: /usr/bin/tee /sys/bus/usb/devices/1-9/authorized

@@ -1,0 +1,12 @@
+[Unit]
+Description=ProtonVPN
+Wants=network-online.target
+
+[Service]
+Type=forking
+ExecStart=/usr/bin/protonvpn connect -f
+Environment=PVPN_WAIT=300
+Environment=SUDO_USER=iszenasi
+
+[Install]
+WantedBy=multi-user.target
