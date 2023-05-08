@@ -4,6 +4,7 @@
       "command": "jedi-language-server",
       "filetypes": ["python"]
     },
+    "python.pythonPath": "python",
 		"golang": {
 			"command": "gopls",
 			"rootPatterns": ["go.mod"],
