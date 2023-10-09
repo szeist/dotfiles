@@ -1,2 +1,6 @@
 .task/*.pem
 .task/*.data
+.zshrc.local
+.local/share/applications/chrome-teams.desktop
+.local/share/applications/pwa-outlook.desktop
+.local/share/applications/pwa-teams.desktop
