@@ -8,12 +8,10 @@ set $ws5 5
 
 # Default workspaces for apps
 
-assign [class="Code"] $ws1
 assign [class="Brave-browser"] $ws2
 assign [class="Google-chrome"] $ws2
 assign [class="Firefox"] $ws2
 assign [class="Slack"] $ws5
-assign [class="Keybase"] $ws5
 assign [class="zoom"] $ws5
 
 
@@ -154,14 +152,14 @@ bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -q sset Master 5%+
 bindsym XF86AudioLowerVolume exec --no-startup-id amixer -q sset Master 5%-
 bindsym XF86AudioMute exec --no-startup-id amixer -q sset Master toggle
 bindsym XF86AudioMicMute exec --no-startup-id amixer -q sset Mic toggle
-bindsym XF86MonBrightnessDown exec --no-startup-id pidof -q redshift || redshift &
-bindsym XF86MonBrightnessUp exec --no-startup-id pkill redshift && xbacklight -set 70
+bindsym XF86MonBrightnessUp exec --no-startup-id pidof -q redshift || redshift &
+bindsym XF86MonBrightnessDown exec --no-startup-id pkill redshift && xbacklight -set 100
 
-# print screen
-bindsym --release Print exec scrot -s
+# print scree
+bindsym --release Print exec scrot -s -e 'xclip -selection clipboard -t image/png -i $f'
 
 # yubico authenticator
-bindsym $mod+Shift+y exec yubioath-desktop
+bindsym $mod+Shift+y exec authenticator
 
 # move workspace between screens
 bindsym $mod+Control+Up exec i3-msg move workspace to output up
