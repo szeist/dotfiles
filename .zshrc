@@ -29,10 +29,12 @@ alias recordscreen='ffmpeg -video_size 1920x1080 -framerate 12 -f x11grab -i :0.
 
 [[ /usr/bin/kubectl ]] && source <(kubectl completion zsh)
 
+if [ -f "${HOME}/opt/todo.txt_cli/todo_completion" ]; then . "${HOME}/opt/todo.txt_cli/todo_completion"; fi
+
 # The next line updates PATH for the Google Cloud SDK.
-if [ -f '/home/iszenasi/opt/google-cloud-sdk/path.zsh.inc' ]; then . '/home/iszenasi/opt/google-cloud-sdk/path.zsh.inc'; fi
+if [ -f "${HOME}/opt/google-cloud-sdk/path.zsh.inc" ]; then . "${HOME}/opt/google-cloud-sdk/path.zsh.inc"; fi
 
 # The next line enables shell command completion for gcloud.
-if [ -f '/home/iszenasi/opt/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/iszenasi/opt/google-cloud-sdk/completion.zsh.inc'; fi
+if [ -f "${HOME}/opt/google-cloud-sdk/completion.zsh.inc" ]; then . "${HOME}/opt/google-cloud-sdk/completion.zsh.inc"; fi
 
 [ -f $HOME/.zshrc.local ] && source $HOME/.zshrc.local
